@@ -101,7 +101,7 @@ capture_dpkg_repack_dir() {
 	if [[ $data =~ $regex ]]; then
 		DPKG_REPACK_DIR="${BASH_REMATCH[1]}"
 	fi
-	echo "$data"
+	echo "$data" | sed 's/dpkg-repack: created \.\/dpkg-repack-[0-9]* for //g'
 }
 
 capture_dpkg_deb_package() {

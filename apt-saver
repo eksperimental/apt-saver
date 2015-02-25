@@ -25,22 +25,44 @@ global_variables() {
     APP_NAME=$APP_CMD
     APP_VERSION="0.0.1"
     APP_DESCRIPTION=""
-	OUTOUT_DIR="$APP_DIR"
-	CACHE_DIR="/var/cache/apt/archives"
-	DATA_DIR="$APP_DIR/data"
-   	APP_CONFIG_FILE="$APP_DIR/$APP_NAME.config"	
+	OUTPUT_DIR="${APP_DIR}"
+
 	BUILD_REPOSITORY_OPTIONS="auto cached current default explicit manifest manual local repack available only removed"
 	#valid_opt='help, copy-packages, build-repository, build-data, repack, update, purge, config, build, add-source, remove-source, version, run-all'
-	REPO_DIR=$(dirname "$APP_DIR")"/repository"
-	LOG_STD="$DATA_DIR/std.log"
-	FINAL_ERROR_STD="$DATA_DIR/std.final_error.log"
-	PACKAGES_GZ_FILE="$REPO_DIR/Packages.gz"
-	REPOSITORY_SOURCE_FILE='/etc/apt/sources.list.d/'"$APP_NAME"'.list'
-	REPOSITORY_SOURCE_LINE="deb file:$REPO_DIR ./"
+
+	#OTHERS
 	DEAD_TIME=0
 	INDEX_BUILT=false
 	#VERSION_SUFFIX=$( echo "$APP_NAME""$HOSTNAME" | sed 's/[^0-9a-zA-Z]//g' )
 	VERSION_SUFFIX=$( printf "repacked-%s" $( echo "$APP_NAME""$HOSTNAME" | sed 's/[^0-9a-zA-Z]//g' ) )
+}
+
+set_configurable_vars() {
+    # Config file. Any settings "key=value" written there will override the
+	# global_variables defaults. Useful to avoid editing this file
+	#DIRS
+	if [ -z ${CACHE_DIR+x} ]; then
+		CACHE_DIR="/var/cache/apt/archives"; fi
+	if [ -z ${DATA_DIR+x} ]; then 
+		DATA_DIR="$OUTPUT_DIR/data"; fi
+	if [ -z ${REPO_DIR+x} ]; then 
+		REPO_DIR="$OUTPUT_DIR/repository"; fi
+	#REPO_DIR_REL=$(dirname "$OUTPUT_DIR")"/repository"
+	REPO_DIR_REL=$(basename $(dirname $REPO_DIR))/$(basename $REPO_DIR)
+	REPOSITORY_SOURCE_LINE="deb file:$REPO_DIR_REL ./"
+
+	#FILES
+	if [ -z ${APP_CONFIG_FILE+x} ]; then 
+		APP_CONFIG_FILE="$APP_DIR/$APP_NAME.config"; fi
+	if [ -z ${PACKAGES_GZ_FILE+x} ]; then 
+		PACKAGES_GZ_FILE="$REPO_DIR/Packages.gz"; fi
+	if [ -z ${REPOSITORY_SOURCE_FILE+x} ]; then 
+		REPOSITORY_SOURCE_FILE='/etc/apt/sources.list.d/'"$APP_NAME"'.list'; fi
+	if [ -z ${LOG_STD+x} ]; then 
+		LOG_STD="$DATA_DIR/std.log"; fi
+	if [ -z ${FINAL_ERROR_STD+x} ]; then 
+		FINAL_ERROR_STD="$DATA_DIR/std.final_error.log"; fi
+
 }
 
 prepare_dirs() {
@@ -75,6 +97,7 @@ do_main() {
     global_variables
     # then override settings with the config file
     [[ -f "$APP_CONFIG_FILE" ]] && source "$APP_CONFIG_FILE" &> /dev/null
+	set_configurable_vars
     #avoid use of ~ in config file to mess up when used these vars under `fakeroot`. so we reassign every occurrence by replace the value of "~"
     for var in "REPO_DIR" "CACHE_DIR" "DATA_DIR"; do
 		eval $var=${!var/^"~"/$HOME}
@@ -83,6 +106,7 @@ do_main() {
 			eval $var=${var_tmp}
 	    fi
     done
+
     ORIGINAL_ARG="$*"; ORIGINAL_ARG_1="$1"; ORIGINAL_ARG_2="$2"; ORIGINAL_ARG_REST="${*:3}"
     prepare_dirs $*
     app $*
@@ -276,6 +300,7 @@ app() {
 			rm -f "$PACKAGES_GZ_FILE" 2> /dev/null
 			fakeroot -u dpkg-scanpackages . /dev/null 2> "$LOG_STD".dpkg-scanpackages | gzip -9c > "$PACKAGES_GZ_FILE" && echo "Packages.gz created succesfully"
 			cat "$LOG_STD".dpkg-scanpackages | grep -vP "^dpkg-scanpackages: warning:"
+
 			#rm -f "$LOG_STD".dpkg-scanpackages 2> /dev/null
 			INDEX_BUILT=true
 		fi
@@ -440,7 +465,7 @@ EOF
 		#"$DATA_DIR"/packages.current.list
 	;;
 
-	# bypass anything else, run the command you want. Usesfull for developin this command
+	# bypass anything else, run the command you want. Usesfull for developing this command
 	"test" )
 		source "$APP_DIR"/test
 	;;

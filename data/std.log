@@ -1,98 +1,148 @@
-dpkg-repack: dpkg-repack: created ./dpkg-repack-7589 for activity-log-manager
-dpkg-repack: dpkg-repack: created ./dpkg-repack-7661 for adobe-flash-properties-gtk
-dpkg-repack: dpkg-repack: created ./dpkg-repack-7717 for alacarte
-dpkg-repack: dpkg-repack: created ./dpkg-repack-7893 for ant
-dpkg-repack: dpkg-repack: created ./dpkg-repack-7976 for ant-optional
-dpkg-repack: dpkg-repack: created ./dpkg-repack-8161 for apache2-bin
-dpkg-repack: dpkg-repack: created ./dpkg-repack-8325 for apache2-data
-dpkg-repack: dpkg-repack: created ./dpkg-repack-10311 for apache2-utils
-dpkg-repack: dpkg-repack: created ./dpkg-repack-10392 for apparmor-easyprof
-dpkg-repack: dpkg-repack: created ./dpkg-repack-10456 for aptitude
-dpkg-repack: dpkg-repack: created ./dpkg-repack-10536 for aptitude-common
-dpkg-repack: dpkg-repack: created ./dpkg-repack-10690 for aufs-tools
-dpkg-repack: dpkg-repack: created ./dpkg-repack-10789 for autoconf
-dpkg-repack: dpkg-repack: created ./dpkg-repack-10913 for binfmt-support
-dpkg-repack: dpkg-repack: created ./dpkg-repack-10983 for bsh
 cp: cannot open '/etc/default/cacerts' for reading: Permission denied
-dpkg-repack: dpkg-repack: created ./dpkg-repack-11091 for calibre-bin
-dpkg-repack: dpkg-repack: created ./dpkg-repack-11170 for cgroup-lite
-dpkg-repack: dpkg-repack: created ./dpkg-repack-11233 for cheese-common
-dpkg-repack: dpkg-repack: created ./dpkg-repack-11677 for chromium-browser-l10n
-dpkg-repack: dpkg-repack: created ./dpkg-repack-11845 for cli-common
-dpkg-repack: dpkg-repack: created ./dpkg-repack-11922 for clojure1.2
-dpkg-repack: dpkg-repack: created ./dpkg-repack-11993 for clojure1.4
-dpkg-repack: dpkg-repack: created ./dpkg-repack-12065 for clojure-contrib
-dpkg-repack: dpkg-repack: created ./dpkg-repack-12127 for cmake-data
-dpkg-repack: dpkg-repack: created ./dpkg-repack-12859 for comerr-dev
-dpkg-repack: dpkg-repack: created ./dpkg-repack-12930 for cpp-4.8
-dpkg-repack: dpkg-repack: created ./dpkg-repack-12996 for cups-server-common
-dpkg-repack: dpkg-repack: created ./dpkg-repack-13802 for dconf-cli
-dpkg-repack: dpkg-repack: created ./dpkg-repack-13863 for dconf-editor
-dpkg-repack: dpkg-repack: created ./dpkg-repack-13943 for dcraw
-dpkg-repack: dpkg-repack: created ./dpkg-repack-14012 for debhelper
-dpkg-repack: dpkg-repack: created ./dpkg-repack-14418 for default-jre-headless
-dpkg-repack: dpkg-repack: created ./dpkg-repack-14475 for dh-apparmor
-dpkg-repack: dpkg-repack: created ./dpkg-repack-14534 for dh-python
-dpkg-repack: dpkg-repack: created ./dpkg-repack-14629 for docbook-xml
-dpkg-repack: dpkg-repack: created ./dpkg-repack-14822 for emacs24
-dpkg-repack: dpkg-repack: created ./dpkg-repack-14890 for emacs24-bin-common
-dpkg-repack: dpkg-repack: created ./dpkg-repack-14959 for emacs24-common
-dpkg-repack: dpkg-repack: created ./dpkg-repack-17429 for emacs24-common-non-dfsg
-dpkg-repack: dpkg-repack: created ./dpkg-repack-17552 for emacsen-common
-dpkg-repack: dpkg-repack: created ./dpkg-repack-17627 for erlang-appmon
-dpkg-repack: dpkg-repack: created ./dpkg-repack-17689 for erlang-asn1
-dpkg-repack: dpkg-repack: created ./dpkg-repack-17771 for erlang-common-test
-dpkg-repack: dpkg-repack: created ./dpkg-repack-17876 for erlang-corba
-dpkg-repack: dpkg-repack: created ./dpkg-repack-18317 for erlang-crypto
-dpkg-repack: dpkg-repack: created ./dpkg-repack-18380 for erlang-debugger
-dpkg-repack: dpkg-repack: created ./dpkg-repack-18467 for erlang-dev
-dpkg-repack: dpkg-repack: created ./dpkg-repack-18807 for erlang-dialyzer
-dpkg-repack: dpkg-repack: created ./dpkg-repack-18891 for erlang-diameter
-dpkg-repack: dpkg-repack: created ./dpkg-repack-18997 for erlang-edoc
-dpkg-repack: dpkg-repack: created ./dpkg-repack-19079 for erlang-eldap
-dpkg-repack: dpkg-repack: created ./dpkg-repack-19140 for erlang-erl-docgen
-dpkg-repack: dpkg-repack: created ./dpkg-repack-19245 for erlang-et
-dpkg-repack: dpkg-repack: created ./dpkg-repack-19310 for erlang-eunit
-dpkg-repack: dpkg-repack: created ./dpkg-repack-19382 for erlang-examples
-dpkg-repack: dpkg-repack: created ./dpkg-repack-19856 for erlang-gs
-dpkg-repack: dpkg-repack: created ./dpkg-repack-20018 for erlang-ic
-dpkg-repack: dpkg-repack: created ./dpkg-repack-20114 for erlang-ic-java
-dpkg-repack: dpkg-repack: created ./dpkg-repack-20174 for erlang-inets
-dpkg-repack: dpkg-repack: created ./dpkg-repack-20310 for erlang-inviso
-dpkg-repack: dpkg-repack: created ./dpkg-repack-20367 for erlang-jinterface
-dpkg-repack: dpkg-repack: created ./dpkg-repack-20429 for erlang-megaco
-dpkg-repack: dpkg-repack: created ./dpkg-repack-20579 for erlang-mnesia
-dpkg-repack: dpkg-repack: created ./dpkg-repack-20667 for erlang-mode
-dpkg-repack: dpkg-repack: created ./dpkg-repack-20740 for erlang-observer
-dpkg-repack: dpkg-repack: created ./dpkg-repack-20846 for erlang-odbc
-dpkg-repack: dpkg-repack: created ./dpkg-repack-20909 for erlang-os-mon
-dpkg-repack: dpkg-repack: created ./dpkg-repack-20982 for erlang-parsetools
-dpkg-repack: dpkg-repack: created ./dpkg-repack-21046 for erlang-percept
-dpkg-repack: dpkg-repack: created ./dpkg-repack-21126 for erlang-pman
-dpkg-repack: dpkg-repack: created ./dpkg-repack-21184 for erlang-public-key
-dpkg-repack: dpkg-repack: created ./dpkg-repack-21252 for erlang-reltool
-dpkg-repack: dpkg-repack: created ./dpkg-repack-21320 for erlang-runtime-tools
-dpkg-repack: dpkg-repack: created ./dpkg-repack-21417 for erlang-snmp
-dpkg-repack: dpkg-repack: created ./dpkg-repack-21649 for erlang-src
-dpkg-repack: dpkg-repack: created ./dpkg-repack-24133 for erlang-ssh
-dpkg-repack: dpkg-repack: created ./dpkg-repack-24226 for erlang-ssl
-dpkg-repack: dpkg-repack: created ./dpkg-repack-24322 for erlang-syntax-tools
-dpkg-repack: dpkg-repack: created ./dpkg-repack-24391 for erlang-test-server
-dpkg-repack: dpkg-repack: created ./dpkg-repack-24457 for erlang-toolbar
-dpkg-repack: dpkg-repack: created ./dpkg-repack-24514 for erlang-tools
-dpkg-repack: dpkg-repack: created ./dpkg-repack-24602 for erlang-tv
-dpkg-repack: dpkg-repack: created ./dpkg-repack-24660 for erlang-typer
-dpkg-repack: dpkg-repack: created ./dpkg-repack-24725 for erlang-webtool
-dpkg-repack: dpkg-repack: created ./dpkg-repack-24793 for erlang-wx
-dpkg-repack: dpkg-repack: created ./dpkg-repack-25090 for erlang-xmerl
-dpkg-repack: dpkg-repack: created ./dpkg-repack-25183 for esound-common
-dpkg-repack: dpkg-repack: created ./dpkg-repack-25245 for ethtool
-dpkg-repack: dpkg-repack: created ./dpkg-repack-25308 for exiftran
-dpkg-repack: dpkg-repack: created ./dpkg-repack-25364 for extlinux
-dpkg-repack: dpkg-repack: created ./dpkg-repack-25435 for firebird2.5-common
-dpkg-repack: dpkg-repack: created ./dpkg-repack-25497 for firebird2.5-common-doc
-dpkg-repack: dpkg-repack: created ./dpkg-repack-25553 for firebird2.5-server-common
-dpkg-repack: dpkg-repack: created ./dpkg-repack-25641 for fonts-dejavu-core
-dpkg-repack: dpkg-repack: created ./dpkg-repack-25733 for fonts-dejavu-extra
-dpkg-repack: dpkg-repack: created ./dpkg-repack-25805 for fonts-droid
-dpkg-repack: dpkg-repack: created ./dpkg-repack-25886 for fonts-horai-umefont
+dpkg-repack: erlang-src
+dpkg-repack: erlang-ssh
+dpkg-repack: erlang-ssl
+dpkg-repack: erlang-syntax-tools
+dpkg-repack: erlang-test-server
+dpkg-repack: erlang-toolbar
+dpkg-repack: erlang-tools
+dpkg-repack: erlang-tv
+dpkg-repack: erlang-typer
+dpkg-repack: erlang-webtool
+dpkg-repack: erlang-wx
+dpkg-repack: erlang-xmerl
+dpkg-repack: esound-common
+dpkg-repack: ethtool
+dpkg-repack: exiftran
+dpkg-repack: extlinux
+dpkg-repack: firebird2.5-common
+dpkg-repack: firebird2.5-common-doc
+dpkg-repack: firebird2.5-server-common
+dpkg-repack: fonts-dejavu-core
+dpkg-repack: fonts-dejavu-extra
+dpkg-repack: fonts-droid
+dpkg-repack: fonts-horai-umefont
+dpkg-repack: fonts-lmodern
+dpkg-repack: fonts-mathjax
+dpkg-repack: fonts-unfonts-core
+dpkg-repack: fop
+dpkg-repack: freepats
+dpkg-repack: frei0r-plugins
+dpkg-repack: g++
+dpkg-repack: g++-4.8
+dpkg-repack: gcc-4.8
+dpkg-repack: gcc-4.8-base
+dpkg-repack: gcj-4.8-jre-lib
+dpkg-repack: gdebi-core
+dpkg-repack: gimp-data
+dpkg-repack: gimp-gmic
+dpkg-repack: gimp-help-common
+dpkg-repack: gir1.2-ebookcontacts-1.2
+dpkg-repack: gir1.2-gck-1
+dpkg-repack: gir1.2-gconf-2.0
+dpkg-repack: gir1.2-gcr-3
+dpkg-repack: gir1.2-gdesktopenums-3.0
+dpkg-repack: gir1.2-gee-0.8
+dpkg-repack: gir1.2-gnomedesktop-3.0
+dpkg-repack: gir1.2-gtk-2.0
+dpkg-repack: gir1.2-ibus-1.0
+dpkg-repack: gir1.2-nautilus-3.0
+dpkg-repack: gir1.2-panelapplet-4.0
+dpkg-repack: gir1.2-poppler-0.18
+dpkg-repack: gir1.2-rsvg-2.0
+dpkg-repack: git-man
+dpkg-repack: gkamus-data
+dpkg-repack: gksu
+dpkg-repack: gnome-applets
+dpkg-repack: gnome-applets-data
+dpkg-repack: gnome-exe-thumbnailer
+dpkg-repack: gnome-media
+dpkg-repack: gnome-panel-data
+dpkg-repack: gnome-session-flashback
+dpkg-repack: gnome-shell-common
+dpkg-repack: gnome-themes-standard
+dpkg-repack: gnome-themes-standard-data
+dpkg-repack: gnome-video-effects
+dpkg-repack: gnubg-data
+dpkg-repack: gnupg2
+dpkg-repack: gnupg-agent
+dpkg-repack: gnustep-base-common
+dpkg-repack: gnustep-base-runtime
+dpkg-repack: gnustep-common
+dpkg-repack: gobject-introspection
+dpkg-repack: golang-doc
+dpkg-repack: golang-go
+dpkg-repack: golang-go-linux-386
+dpkg-repack: golang-src
+dpkg-repack: gpgsm
+dpkg-repack: gtk2-engines-pixbuf
+dpkg-repack: gyp
+dpkg-repack: hddtemp
+dpkg-repack: hydra
+dpkg-repack: icedtea-7-jre-jamvm
+dpkg-repack: icoutils
+dpkg-repack: imagemagick-common
+dpkg-repack: indicator-applet-complete
+dpkg-repack: indicator-keyboard
+dpkg-repack: File not found: /var/lib/polkit-1/localauthority
+dpkg-repack: init-system-helpers
+dpkg-repack: iproute2
+dpkg-repack: java-common
+dpkg-repack: javascript-common
+dpkg-repack: java-wrappers
+dpkg-repack: junit
+dpkg-repack: junit4
+dpkg-repack: krb5-multidev
+dpkg-repack: ksh
+dpkg-repack: latex-beamer
+dpkg-repack: latex-xcolor
+dpkg-repack: leap-keymanager
+dpkg-repack: leap-mail
+dpkg-repack: liba52-0.7.4
+dpkg-repack: libaacs0
+dpkg-repack: libaccount-plugin-generic-oauth
+dpkg-repack: libaccount-plugin-google
+dpkg-repack: libaccounts-qt5-1
+dpkg-repack: libaio1
+dpkg-repack: libalgorithm-diff-perl
+dpkg-repack: libalgorithm-diff-xs-perl
+dpkg-repack: libalgorithm-merge-perl
+dpkg-repack: libalut0
+dpkg-repack: libao4
+dpkg-repack: libao-common
+dpkg-repack: libapache2-mod-php5
+dpkg-repack: libapache2-mod-wsgi
+dpkg-repack: libapache-pom-java
+dpkg-repack: libapparmor1
+dpkg-repack: libapparmor-perl
+dpkg-repack: libapr1
+dpkg-repack: libapr1-dev
+dpkg-repack: libaprutil1
+dpkg-repack: libaprutil1-dbd-sqlite3
+dpkg-repack: libaprutil1-dev
+dpkg-repack: libaprutil1-ldap
+dpkg-repack: libart2.0-cil
+dpkg-repack: libasan0
+dpkg-repack: libasm3-java
+dpkg-repack: libasound2-data
+dpkg-repack: libass4
+dpkg-repack: libassuan0
+dpkg-repack: libatk1.0-dev
+dpkg-repack: libatk-bridge2.0-dev
+dpkg-repack: libatkmm-1.6-dev
+dpkg-repack: libatk-wrapper-java
+dpkg-repack: libatk-wrapper-java-jni
+dpkg-repack: libatm1
+dpkg-repack: libatomic1
+dpkg-repack: libaudiofile1
+dpkg-repack: libaudio-scrobbler-perl
+dpkg-repack: libauthen-sasl-perl
+dpkg-repack: libautodie-perl
+dpkg-repack: libavalon-framework-java
+dpkg-repack: libavcodec53
+dpkg-repack: libavcodec-extra-54
+dpkg-repack: libavdevice53
+dpkg-repack: libavfilter2
+dpkg-repack: libavformat53
+dpkg-repack: libav-tools
+dpkg-repack: libavutil51
