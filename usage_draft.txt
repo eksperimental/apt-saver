@@ -1,0 +1,20 @@
+USAGE DRAFT
+
+Command name:  
+	apt-saver
+	apt-local-repo
+
+apt-saver	copy-packages
+			build-repository
+			build-data
+			update
+			clean/purge
+			config
+			build
+			add-source
+			remove-source
+			restore
+
+			--force-check
+			--additional-directory
+

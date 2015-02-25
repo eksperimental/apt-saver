@@ -1,0 +1,462 @@
+#! /bin/bash
+set +m
+shopt -s lastpipe
+
+EXECUTION_TIME="$(date +%s)"
+set_APP_DIR() {
+	local SOURCE="${BASH_SOURCE[0]}"
+	local DIR=''
+	while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+	  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+	  SOURCE="$(readlink "$SOURCE")"
+	  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+	done
+	APP_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"	
+}
+set_APP_DIR
+source "$APP_DIR"/functions.sh
+
+# This function will load all the variables defined here. They might be overriden
+# by the 'global_config' file contents
+global_variables() {
+    # Config file. Any settings "key=value" written there will override the
+	# global_variables defaults. Useful to avoid editing this file
+    APP_CMD=$(basename $0)
+    APP_NAME=$APP_CMD
+    APP_VERSION="0.0.1"
+    APP_DESCRIPTION=""
+	OUTOUT_DIR="$APP_DIR"
+	CACHE_DIR="/var/cache/apt/archives"
+	DATA_DIR="$APP_DIR/data"
+   	APP_CONFIG_FILE="$APP_DIR/$APP_NAME.config"	
+	BUILD_REPOSITORY_OPTIONS="auto cached current default explicit manifest manual local repack available only removed"
+	#valid_opt='help, copy-packages, build-repository, build-data, repack, update, purge, config, build, add-source, remove-source, version, run-all'
+	REPO_DIR=$(dirname "$APP_DIR")"/repository"
+	LOG_STD="$DATA_DIR/std.log"
+	FINAL_ERROR_STD="$DATA_DIR/std.final_error.log"
+	PACKAGES_GZ_FILE="$REPO_DIR/Packages.gz"
+	REPOSITORY_SOURCE_FILE='/etc/apt/sources.list.d/'"$APP_NAME"'.list'
+	REPOSITORY_SOURCE_LINE="deb file:$REPO_DIR ./"
+	DEAD_TIME=0
+	INDEX_BUILT=false
+	#VERSION_SUFFIX=$( echo "$APP_NAME""$HOSTNAME" | sed 's/[^0-9a-zA-Z]//g' )
+	VERSION_SUFFIX=$( printf "repacked-%s" $( echo "$APP_NAME""$HOSTNAME" | sed 's/[^0-9a-zA-Z]//g' ) )
+}
+
+prepare_dirs() {
+	#check for needed configuration
+	if [[ -z "$DATA_DIR" ]]; then
+        echo "Please set your \$DATA_DIR environment variable"
+        exit 1
+    fi
+    mkdir -p "${DATA_DIR}" 2> /dev/null
+ 	[ ! -d "$DATA_DIR" ] && echo "$DATA_DIR could not be created. Please check either the value of \$DATA_DIR in '$APP_CONFIG_FILE' or the permitions, and try again." 1>&2 && exit 1
+	[ ! -w "$DATA_DIR" ] && printf "%s is not writtable.\nCheck the permitions for the directory" $DATA_DIR 1>&2 && exit 1
+	[[ "$1" != "test"  ]] && rm -f "$DATA_DIR"/* 2> /dev/null
+	[[ "$1" != "test"  ]] && rm -f "$FINAL_ERROR_STD" 2> /dev/null
+
+	#check for needed configuration
+	if [[ -z "$REPO_DIR" ]]; then
+        echo "Please set your \$REPO_DIR environment variable"
+        exit 1
+    fi
+    mkdir -p "${REPO_DIR}" 2> /dev/null
+ 	[ ! -d "$REPO_DIR" ] && echo "$REPO_DIR could not be created. Please check either the value of \$REPO_DIR in '$APP_CONFIG_FILE' or the permitions, and try again." 1>&2 && exit 1
+	[ ! -w "$REPO_DIR" ] && printf "%s is not writtable.\nCheck the permitions for the directory" $REPO_DIR 1>&2 && exit 1
+	[[ "$1" != "test"  ]] && rm -f "$DATA_DIR"/* 2> /dev/null
+	[[ "$1" != "test"  ]] && rm -f "$FINAL_ERROR_STD" 2> /dev/null
+	DPKG_REPACK_DIR=
+	DPKG_DEB_PACKAGE=
+}
+
+do_main() {
+	local var_tmp=''
+    # Load default configuration
+    global_variables
+    # then override settings with the config file
+    [[ -f "$APP_CONFIG_FILE" ]] && source "$APP_CONFIG_FILE" &> /dev/null
+    #avoid use of ~ in config file to mess up when used these vars under `fakeroot`. so we reassign every occurrence by replace the value of "~"
+    for var in "REPO_DIR" "CACHE_DIR" "DATA_DIR"; do
+		eval $var=${!var/^"~"/$HOME}
+		if [[ var_tmp=$(readlink -f ${var} ) && -n "${var_tmp}" ]]; then
+			#eval $var=$(readlink -f "${!var/"~"/$HOME}")
+			eval $var=${var_tmp}
+	    fi
+    done
+    ORIGINAL_ARG="$*"; ORIGINAL_ARG_1="$1"; ORIGINAL_ARG_2="$2"; ORIGINAL_ARG_REST="${*:3}"
+    prepare_dirs $*
+    app $*
+}
+
+app() {
+	local app_action=$1      #Ex: build-repository
+	case $app_action in
+	"help" )
+		echo
+		echo "$APP_NAME v$APP_VERSION"
+		echo "$APP_DESCRIPTION"
+		echo "Usage: $APP_CMD <COMMAND> <OPTIONS>"
+		echo ""
+		echo "Usage:"
+		# command "set" to set variables
+		echo "    $APP_CMD help                         Show this message"
+		#echo "    $APP_CMD install [-s] <version>       Download and install a <version>"
+		echo "    $APP_CMD build-apt-data <options>     Builds the data of installed packages. Options: ${BUILD_REPOSITORY_OPTIONS}"
+		echo "    $APP_CMD build-repository <name>      Builds repository. Options: ${BUILD_REPOSITORY_OPTIONS}"
+		echo "    $APP_CMD build-index <name>           Builds \"Packages.gz\""
+		echo
+		echo "Example:"
+		echo "    $APP_CMD install v0.4.12              Install a specific version number"
+		echo "    $APP_CMD use 0.2                      Use the latest available 0.2.x release"
+		echo
+	;;
+
+
+	"build-repository" )
+		local f 	#this is gonna be the "to_install.stepX.list" in every step
+		[[ "$1" == "$ORIGINAL_ARG_1" ]] && echo "Building Repository..."
+		local app_option=$2      #Ex: only, cached
+		local app_values=${*:3}       #Ex: apache2 linux-generic
+		! _check_BUILD_REPOSITORY_OPTIONS "$app_option" && exit 1
+
+		pushd "$DATA_DIR" 1> /dev/null
+		echo "Building data..."
+		app build-apt-data "$app_option" "$app_values"
+		local package_name
+		local file_installed
+		local version_installed
+
+		#crear tres listas.
+		# 1) local: already in $REPO_DIR
+		app build-apt-data local
+		# 2) cached
+		app build-apt-data cached
+		# 3) repack (current - local - cached)
+		app build-apt-data repack
+		# 4) available (installed & uninstalled)
+		app build-apt-data available
+		
+		#########
+		# STEP no.1: LOCAL
+		# lista de archivos a instalar "total"
+		cp -al --remove-destination "packages."$app_option".list" to_install.input.list
+
+		#list the packages that cannot be found in any of the repositories
+		comm -23 to_install.input.list packages.available.list | tr -d " \t" | sort | uniq > to_install.not_found.list
+		#list all the packages known for installation
+		comm -12 to_install.input.list packages.available.list | tr -d " \t" | sort | uniq > to_install.list
+		f="$DATA_DIR/to_install.not_found.list"
+		if [[ -s "$f" ]]; then
+			echo "" 1>&2
+			echo "ERROR: The following packages cannot be found and will be omitted: " 1>&2
+			printf "   * " 1>&2
+			cat "$f" | paste -s -d " " 1>&2
+		fi
+
+		echo ""
+		printf "Creating repository of %d packages.\n" $(get_number_of_lines "$DATA_DIR/packages."$app_option".list" ) 
+		generate_install_step_files 1
+
+		#########
+		# STEP no.2: CACHED
+		f="$DATA_DIR"/to_install.step2.list
+		if [[ -s "$f" ]]; then
+			echo ""
+			printf "Copying %d files from cache...\n" $(get_number_of_lines "$f") 
+			comm -23 "$f" packages.cached.list | tr -d " \t" |  sort | uniq  > to_install.cached.list
+			get_files_installed to_install.cached.list > "$DATA_DIR"/to_install.cached.files
+			rsync_cmd="rsync -nv -auh --stats --exclude=* --include-from=to_install.cached.files \"$CACHE_DIR/\" \"$REPO_DIR/\""
+			#echo "$rsync_cmd"
+			#exit
+			eval ${rsync_cmd/rsync -nv /rsync }  | grep -P "Number of files transferred:"
+
+			# Check every file to make sure everything's been copied
+			# if not, add these items to repack
+			generate_install_step_files 2
+
+			#########
+			# STEP no. 3: REPACK
+			f="$DATA_DIR"/to_install.step3.list
+			if [[ -s "$f" ]]; then
+				echo ""
+				printf "Repacking %d files...\n" $(get_number_of_lines "$f") 
+				repack_files "$f"
+				# which are the files that have not been installed yet
+				generate_install_step_files 3
+
+				#########
+				# STEP no. 4: REPACK
+				f="$DATA_DIR"/to_install.step4.list
+				if [[ -s "$f" ]]; then
+					#check all the files, and list the ones that were not installed, and offer to download the ones that coudln't repack or copy
+					local download_size=$(get_size_files_installed "$f")
+					local download_packages=$(cat "$DATA_DIR"/to_install.step4.list |  paste -s -d " " )
+					local download_packages_number=$(get_number_of_lines "$f")
+					echo "Notice: $download_packages_number package(s) could not be repacked:" 1>&2
+					echo "   * $download_packages" 1>&2
+			
+					[[ "$download_size" != 0 ]] && confirm  \
+						"Would you like to download them ($download_size) [Y/n]?" "Y" && {
+							echo "Downloading $download_packages_number files..."
+							pushd "$REPO_DIR" 1> /dev/null
+							local cmd="fakeroot -u apt-get --no-install-recommends -o Dir::Cache::Archives='"$REPO_DIR"' download $download_packages"
+							echo $cmd && eval $cmd
+							fakeroot -u rm -rf $REPO_DIR/partial/							
+							popd 1> /dev/null
+						}
+					generate_install_step_files 4
+				fi
+			fi
+		fi
+
+		# STEP no. 5: FINAL ERRORS
+		# find out last step file
+		f=$(ls -tc "$DATA_DIR"/to_install.step?.list 2> /dev/null | head -1)
+		if [[ -s "$f" || -s "$DATA_DIR"/to_install.not_found.list ]]; then
+			echo "" 1>&2
+			echo "ERROR: The following packages could not be installed: " | tee -a "$FINAL_ERROR_STD" 1>&2
+			
+			if [[ -s "$DATA_DIR/to_install.not_found.list" ]]; then
+				printf "   * Unknown packages: " | tee -a "$FINAL_ERROR_STD" 1>&2
+				cat "$DATA_DIR/to_install.not_found.list" |  paste -s -d " "| tee -a "$FINAL_ERROR_STD" 1>&2
+			fi
+
+			#packages  that couldn't be dowloaded
+			if [[ -s "$DATA_DIR/to_install.step5.list" ]]; then
+				printf "   * Not able to download: " | tee -a "$FINAL_ERROR_STD" 1>&2
+				cat "$DATA_DIR/to_install.step5.list" |  paste -s -d " " | tee -a "$FINAL_ERROR_STD" 1>&2  
+			fi
+
+			cat "$f" "$DATA_DIR"/to_install.not_found.list | sort | uniq > to_install.error.list
+		fi			
+
+		#determine packages installed in this run
+		get_files_local > installed.final.files
+		get_list_local installed.final.files > installed.final.list
+		comm -23 installed.final.list packages.local.list | tr -d " \t" | sort | uniq > installed.new.list
+
+		popd 1> /dev/null
+		pushd "$REPO_DIR" 1> /dev/null
+
+		#app updated
+		#TODO: CREATE SIGNATURE FILE
+
+		echo ""
+		local elapsed_time=$(($(date +%s)-$EXECUTION_TIME-$DEAD_TIME))
+		echo "All Done! (in "$(display_time $elapsed_time)")"
+		echo "- Built "$(get_number_of_lines "$DATA_DIR/installed.new.files")" package(s)"
+		echo "- Indexed "$(get_number_of_lines "$DATA_DIR/installed.final.files")" package(s)"
+		#download
+		[[ -s "$DATA_DIR/installed.step4.list" ]] && echo "- Downloaded "$(get_number_of_lines "$DATA_DIR/installed.step4.list")" package(s)"
+
+		#remind of the important errors
+		if [[ -s "$DATA_DIR/std.final_error.log" ]]; then
+			echo "" 1>&2
+			echo "Please be aware of the following message." 1>&2
+			cat "$DATA_DIR/std.final_error.log" 1>&2
+		fi
+		popd 1> /dev/null	
+	;;
+
+	"build-apt-data" )
+		[[ "$1" == "$ORIGINAL_ARG_1" ]] && echo "Building Data..."
+		local app_option="$2"      #Ex: only, cached
+		local app_values="${*:3}"       #Ex: apache2 linux-generic
+		
+		! _check_BUILD_REPOSITORY_OPTIONS "$app_option" && exit 1
+		source "$APP_DIR/build_apt_data.sh"
+		build_apt_data_packages "$app_option" "$app_values"
+	;;
+
+	"build-index" )
+		echo "Building Package Index..."
+		echo "Scanning $(ls -al $REPO_DIR/*.deb | wc -l) for packages..."
+		pushd $REPO_DIR 1> /dev/null
+		if [[ -d "$REPO_DIR/" && "$(ls -A "$REPO_DIR/")" ]]; then
+			rm -f "$PACKAGES_GZ_FILE" 2> /dev/null
+			fakeroot -u dpkg-scanpackages . /dev/null 2> "$LOG_STD".dpkg-scanpackages | gzip -9c > "$PACKAGES_GZ_FILE" && echo "Packages.gz created succesfully"
+			cat "$LOG_STD".dpkg-scanpackages | grep -vP "^dpkg-scanpackages: warning:"
+			#rm -f "$LOG_STD".dpkg-scanpackages 2> /dev/null
+			INDEX_BUILT=true
+		fi
+		popd 1> /dev/null
+	;;
+
+	"repack" )
+		local package_names="${*:2}"
+		repack_files "$package_names"
+	;;
+
+	"clean" )
+		echo "You are about to delete all packages from \"$REPO_DIR\"?"
+		confirm  "Are you sure [y/N]?" "N" && {
+			[[ ! -z "$REPO_DIR" ]] && \
+				rm -fr $REPO_DIR/* 2> /dev/null && echo "Repository has been CLEANED!"
+			[[ ! -z "$DATA_DIR" ]] && \
+				rm -fr $DATA_DIR/* 2> /dev/null
+			return $(true)
+		}
+		echo "No files have been deleted." && return $(false)
+	;;
+
+	"update" )
+		pushd "$REPO_DIR" 1> /dev/null
+
+		#create the index file (if needed)
+		echo ""
+		if package_gz_needs_build; then
+			app build-index
+			if [[ ! -s "$REPO_DIR/Packages.gz" ]]; then
+				error_msg 1>&2
+				echo "$REPO_DIR/Packages.gz could not be created." 1>&2
+				exit 1
+			fi
+		else
+			echo "Index is already up-to-date!"
+		fi
+
+		#add repository to source
+		echo ""
+		app add-source
+
+		#run "apt-get update"
+		if [[ $INDEX_BUILT == true ]]; then
+			echo ""
+			app update-db
+		fi
+		popd 1> /dev/null
+	;;
+
+	"show" )
+		#display the information from build-data
+		#ex: "app show default" it lists all the default packages
+		#maybe: app list-names default, app list-files default
+
+		local app_option="$2"
+		local app_values="$3"
+		! _check_BUILD_REPOSITORY_OPTIONS "$app_option" && exit 1
+		
+		app build-apt-data "$app_option" "$app_values"
+		#TODO: we should give a warning if the file cannot be found
+		cat "$DATA_DIR/packages.""$app_option"".list"
+	;;	
+
+	"update-db" )
+		echo "Updating Package Database..."
+		local repo=$(basename "$REPOSITORY_SOURCE_FILE")
+		echo "sudo apt-get update -o Dir::Etc::sourcelist=\"sources.list.d/$repo\" -o Dir::Etc::sourceparts=\"-\" -o APT::Get::List-Cleanup=\"0\""
+		update_repo $repo | grep -vP "^Ign file:" && \
+			echo "Local repository index has been updated to the database."
+	;;
+
+	"add-source" )
+		if contains_line "$REPOSITORY_SOURCE_FILE" "$REPOSITORY_SOURCE_LINE"; then
+			echo "Repository already present in the source list."
+		else	
+			confirm  "Would you like to add \"$REPOSITORY_SOURCE_FILE\" as a source [Y/n]?" "Y" && {
+				#sudo sh -c 'echo "deb file:/usr/local/mydebs ./" > /etc/apt/sources.list.d/mydebs.list'
+				if ! contains_line "$REPOSITORY_SOURCE_FILE" "$REPOSITORY_SOURCE_LINE"; then
+					sudo sh -c -- "touch $REPOSITORY_SOURCE_FILE; cat >>$REPOSITORY_SOURCE_FILE" <<-EOF
+						$REPOSITORY_SOURCE_LINE
+EOF
+					sudo chown --reference='/etc/apt/sources.list' "$REPOSITORY_SOURCE_FILE"
+					sudo chgrp --reference='/etc/apt/sources.list' "$REPOSITORY_SOURCE_FILE"
+					sudo chmod --reference='/etc/apt/sources.list' "$REPOSITORY_SOURCE_FILE"
+					#check if line was succesfully added
+					contains_line "$REPOSITORY_SOURCE_FILE" "$REPOSITORY_SOURCE_LINE" || echo "ERROR: something went wrong and the repository line could not be added to the source list." 1>&2
+					echo "Repository has been added."
+					return $(true)
+				else
+					return $(false)
+				fi
+			}
+		fi
+	;;
+
+	"remove-source" )
+		local source='/etc/apt/sources.list.d/'"$APP_NAME"'.list'
+		#sudo sh -c 'rm -f '"$REPO_DIR"'' && echo "Source has been removed!"
+		if contains_line "$REPOSITORY_SOURCE_FILE" "$REPOSITORY_SOURCE_LINE"; then
+			confirm  "Would you like to remove \"$REPOSITORY_SOURCE_FILE\" from the repository sources [y/N]?" "N" && {
+				#sudo sh -c 'echo "deb file:/usr/local/mydebs ./" > /etc/apt/sources.list.d/mydebs.list'
+				if contains_line "$REPOSITORY_SOURCE_FILE" "$REPOSITORY_SOURCE_LINE"; then
+					#TODO: TO IMPLEMENT  . CONTINUE
+					local tmp_file=$(mktemp /tmp/output.XXXXXXXXXX) || { echo "Failed to create temp file"; exit 1; }
+					grep -v "$REPOSITORY_SOURCE_LINE" "$REPOSITORY_SOURCE_FILE" 
+					sudo grep -v "$REPOSITORY_SOURCE_LINE" "$REPOSITORY_SOURCE_FILE" > "$tmp_file"
+					sudo chown --reference="$REPOSITORY_SOURCE_FILE" "$tmp_file" 
+					sudo chgrp --reference="$REPOSITORY_SOURCE_FILE" "$tmp_file" 
+					sudo chmod --reference="$REPOSITORY_SOURCE_FILE" "$tmp_file" 
+					sudo mv "$tmp_file" "$REPOSITORY_SOURCE_FILE"
+
+					#check if line was succesfully removed
+					contains_line "$REPOSITORY_SOURCE_FILE" "$REPOSITORY_SOURCE_LINE" && echo "ERROR: something went wrong and the repository line could not be removed to the source list." 1>&2
+					echo "Repository has been removed."
+					return $(true)
+				else
+					return $(false)
+				fi
+			}
+		else	
+			echo "Repository is not present. Nothing to remove!"
+		fi
+	;;
+
+	"version" ) 
+		echo "$APP_NAME v$APP_VERSION"
+		echo "Copyright \(C\) 2013 Free Software Foundation, Inc."
+		echo "License GPLv3: GNU GPL version 3"
+		echo "<http://www.gnu.org/licenses/gpl.html>."
+		echo "This is free software: you are free to change and redistribute it."
+		echo "There is NO WARRANTY, to the extent permitted by law."
+		echo ""
+		echo "Originally written by XXX"
+		echo "Please send bug reports and questions to <xxx@xxx.org>."
+	;;
+
+	"config" )
+	;;
+
+	"setup" )
+		#TODO: create a set up wizard
+	;;	
+
+	"create-iso" )
+	;;
+
+	"remove-local-package" )
+	;;
+
+	"install" )
+		#sudo dpkg -i *.deb
+		app update
+
+		mkdir -p "$REPO_DIR"/local
+		# TODO: hacer un loop. por cada archiveo en $REPO_DIR , 
+		# determinar si se necesita instalarlo.
+		# y si SI, hacer un hardlink en ./local
+		app build-apt-data current
+		#CONTINUE
+		#"$DATA_DIR"/packages.current.list
+	;;
+
+	# bypass anything else, run the command you want. Usesfull for developin this command
+	"test" )
+		source "$APP_DIR"/test
+	;;
+
+	* )
+		error_msg 1>&2
+		echo "Command not understood" 1>&2
+		more_info 1>&2
+	;;
+	esac
+}
+
+#
+# MAIN
+# Do not change anything here. If you want to modify the code, edit do_main()
+#
+do_main $*
+
+exit 0
