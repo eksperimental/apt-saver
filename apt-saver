@@ -186,13 +186,15 @@ app() {
 		f="$DATA_DIR"/to_install.step2.list
 		if [[ -s "$f" ]]; then
 			echo ""
-			printf "Copying %d files from cache...\n" $(get_number_of_lines "$f") 
-			comm -23 "$f" packages.cached.list | tr -d " \t" |  sort | uniq  > to_install.cached.list
-			get_files_installed to_install.cached.list > "$DATA_DIR"/to_install.cached.files
-			rsync_cmd="rsync -nv -auh --stats --exclude=* --include-from=to_install.cached.files \"$CACHE_DIR/\" \"$REPO_DIR/\""
+			comm -12 "$f" "$DATA_DIR"/packages.cached.list | tr -d " \t" |  sort | uniq  > "$DATA_DIR"/to_install.cached.list
+			get_files_installed "$DATA_DIR"/to_install.cached.list > "$DATA_DIR"/to_install.cached.files
+			printf "Copying %d files from cache...\n" $(get_number_of_lines "$DATA_DIR"/to_install.cached.files)
+			rsync_cmd="rsync -nv -auh --stats --include-from=${DATA_DIR}/to_install.cached.files --exclude=* \"$CACHE_DIR/\" \"$REPO_DIR/\""
 			#echo "$rsync_cmd"
+			#eval $rsync_cmd
 			#exit
-			eval ${rsync_cmd/rsync -nv /rsync }  | grep -P "Number of files transferred:"
+			eval ${rsync_cmd/rsync -nv /rsync }  | grep -P "Number of files:"
+			#exit
 
 			# Check every file to make sure everything's been copied
 			# if not, add these items to repack
@@ -251,7 +253,7 @@ app() {
 				cat "$DATA_DIR/to_install.step5.list" |  paste -s -d " " | tee -a "$FINAL_ERROR_STD" 1>&2  
 			fi
 
-			cat "$f" "$DATA_DIR"/to_install.not_found.list | sort | uniq > to_install.error.list
+			cat "$f" "$DATA_DIR"/to_install.not_found.list | sort | uniq > "$DATA_DIR"/to_install.error.list
 		fi			
 
 		#determine packages installed on this run

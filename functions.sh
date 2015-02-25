@@ -145,19 +145,19 @@ repack_files() {
 			sed -i 's/^\( (Repackaged on .* by dpkg-repack\)\(.)\)$/\1 and '"${APP_NAME}"'\2/g' "$file"
 
 			dpkg --build "$REPO_DIR/$DPKG_REPACK_DIR" "."  2>&1 | filter_dpkg | capture_dpkg_deb_package > >(grep -vP "^dpkg-deb: building package " | tee -a "$LOG_STD") && {
-				DEB_PACKAGE_ORIGINAL=$(echo "$DPKG_DEB_PACKAGE" | sed 's/'"$VERSION_SUFFIX"'//g')
+				#DEB_PACKAGE_ORIGINAL=$(echo "$DPKG_DEB_PACKAGE" | sed 's/'"$VERSION_SUFFIX"'//g')
 				#[[ ! -z "$DPKG_DEB_PACKAGE" && ! -z $DEB_PACKAGE_ORIGINAL ]] && \
 				#	mv "$REPO_DIR/$DPKG_DEB_PACKAGE" "$REPO_DIR/$DEB_PACKAGE_ORIGINAL"
-				#[[ ! -z "$DPKG_REPACK_DIR" ]] && \
-				#	rm -fr "$REPO_DIR/$DPKG_REPACK_DIR"
+				[[ ! -z "$DPKG_REPACK_DIR" ]] && \
+					rm -fr "$REPO_DIR/$DPKG_REPACK_DIR"
 			}
 		fi
 	done < "$file_list"
 
 	[[ ! -z "$file_list" ]] && \
 		rm -f "$DATA_DIR/$file_list" 2> /dev/null
-	#clean last dir created
-	#fakeroot -u rm -rf "$REPO_DIR"/dpkg-repack-* 2> /dev/null
+	# clean directories that failed to build
+	fakeroot -u rm -rf "$REPO_DIR"/dpkg-repack-* 2> /dev/null
 	
 	#cat "$LOG_STD"
 	#rm -f ."$LOG_STD" 2> /dev/null

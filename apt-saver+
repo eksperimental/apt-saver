@@ -147,7 +147,8 @@ app() {
 			printf "Copying %d files from cache...\n" $(get_number_of_lines "$f") 
 			comm -23 "$f" packages.cached.list | tr -d " \t" |  sort | uniq  > to_install.cached.list
 			get_files_installed to_install.cached.list > "$DATA_DIR"/to_install.cached.files
-			rsync_cmd="rsync -nv -auh --stats --exclude=* --include-from=to_install.cached.files \"$CACHE_DIR/\" \"$REPO_DIR/\""
+			echo $DATA_DIR
+			rsync_cmd="rsync -nv -auh --stats --include-from=to_install.cached.files --exclude=* \"$CACHE_DIR/\" \"$REPO_DIR/\""
 			#echo "$rsync_cmd"
 			#exit
 			eval ${rsync_cmd/rsync -nv /rsync }  | grep -P "Number of files transferred:"

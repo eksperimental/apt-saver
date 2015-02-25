@@ -45,12 +45,12 @@ build_apt_data_packages() {
 	;;
 	
 	"auto" )
-		# packages.auto.list: packages automatically installed
+		# packages.auto.list: packages installed automatically
 		fakeroot -u apt-mark showauto | sort | uniq > packages.auto.list
 	;;
 	
 	"manual" )
-	# packages.manual.list: packages automatically installed
+	# packages.manual.list: packages installed manually
 		fakeroot -u apt-mark showmanual | sort | uniq > packages.manual.list
 		#sort files and remove duplicate lines
 		for file in $(ls packages.*.list); do
