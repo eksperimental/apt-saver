@@ -1,4 +1,0 @@
-/home/w/apt-saver/inspirasi/aptoncd_0.1.98+bzr117.orig/APTonCD/core/mkisofs.py:    def create_iso(self, command):
-/home/w/apt-saver/inspirasi/aptoncd_0.1.98+bzr117.orig/APTonCD/create/createWindow.py:    def create_iso(self, isoFileList, tmpdir):
-/home/w/apt-saver/inspirasi/aptoncd_0.1.98+bzr117.orig/APTonCD/create/createWindow.py:            iso_file.create_iso(command)
-/home/w/apt-saver/inspirasi/aptoncd_0.1.98+bzr117.orig/APTonCD/create/createWindow.py:        self.create_iso(isoFileList,tmpdir)

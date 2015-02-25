@@ -1,463 +1,0 @@
-sending incremental file list
-removing duplicate name . from file list (2)
-removing duplicate name apache2-mpm-prefork_2.2.22-6ubuntu5.1_i386.deb from file list (5)
-removing duplicate name apache2-utils_2.2.22-6ubuntu5.1_i386.deb from file list (7)
-removing duplicate name apache2.2-bin_2.2.22-6ubuntu5.1_i386.deb from file list (9)
-removing duplicate name apache2.2-common_2.2.22-6ubuntu5.1_i386.deb from file list (11)
-removing duplicate name apache2_2.2.22-6ubuntu5.1_i386.deb from file list (13)
-removing duplicate name apt-clone_0.3.1~ubuntu4_all.deb from file list (15)
-removing duplicate name apt-transport-https_0.9.7.7ubuntu5_i386.deb from file list (17)
-removing duplicate name apt-utils_0.9.7.7ubuntu5_i386.deb from file list (19)
-removing duplicate name apt-xapian-index_0.45ubuntu2.1_all.deb from file list (21)
-removing duplicate name apt_0.9.7.7ubuntu5_i386.deb from file list (23)
-removing duplicate name calibre-bin_0.9.18+dfsg1-1bzr_i386.deb from file list (25)
-removing duplicate name calibre_0.9.18+dfsg1-1bzr_all.deb from file list (27)
-removing duplicate name curl_7.29.0-1ubuntu3.2_i386.deb from file list (31)
-removing duplicate name firefox-globalmenu_24.0+build1-0ubuntu0.13.04.1_i386.deb from file list (131)
-removing duplicate name firefox-locale-en_24.0+build1-0ubuntu0.13.04.1_i386.deb from file list (133)
-removing duplicate name firefox_24.0+build1-0ubuntu0.13.04.1_i386.deb from file list (135)
-removing duplicate name flashplugin-installer_11.2.202.310ubuntu0.13.04.1_i386.deb from file list (137)
-removing duplicate name gcj-4.7-base_4.7.3-1ubuntu1_i386.deb from file list (139)
-removing duplicate name gir1.2-gudev-1.0_198-0ubuntu11.2_i386.deb from file list (141)
-removing duplicate name google-chrome-stable_29.0.1547.76-r223446_i386.deb from file list (146)
-removing duplicate name hal_0.5.14-8ubuntu1_i386.deb from file list (148)
-delta-transmission disabled for local transfer or --whole-file
-./
-Packages.gz
-       32768  88%    0.00kB/s    0:00:00         36931 100%    3.97MB/s    0:00:00 (xfer#1, to-check=1932/1935)
-apache2-mpm-prefork_2.2.22-6ubuntu5.1_i386.deb is uptodate
-apache2-utils_2.2.22-6ubuntu5.1_i386.deb is uptodate
-apache2.2-bin_2.2.22-6ubuntu5.1_i386.deb is uptodate
-apache2.2-common_2.2.22-6ubuntu5.1_i386.deb is uptodate
-apache2_2.2.22-6ubuntu5.1_i386.deb is uptodate
-apt-clone_0.3.1~ubuntu4_all.deb is uptodate
-apt-transport-https_0.9.7.7ubuntu5_i386.deb is uptodate
-apt-utils_0.9.7.7ubuntu5_i386.deb is uptodate
-apt-xapian-index_0.45ubuntu2.1_all.deb is uptodate
-apt_0.9.7.7ubuntu5_i386.deb is uptodate
-calibre-bin_0.9.18+dfsg1-1bzr_i386.deb is uptodate
-calibre_0.9.18+dfsg1-1bzr_all.deb is uptodate
-cinelerra-cv_1%3a2.2-0.14~ppa1~raring3_i386.deb is uptodate
-cinelerra-cv_2.2-0.14~ppa1~raring3_i386.deb is uptodate
-curl_7.29.0-1ubuntu3.2_i386.deb is uptodate
-enigmail_1.5.2-0ubuntu0.13.04.1_i386.deb is uptodate
-enigmail_2%3a1.5.2-0ubuntu0.13.04.1_i386.deb is uptodate
-erlang-appmon_1%3a16.b.2_i386.deb is uptodate
-erlang-appmon_16.b.2_i386.deb is uptodate
-erlang-asn1_1%3a16.b.2_i386.deb is uptodate
-erlang-asn1_16.b.2_i386.deb is uptodate
-erlang-base_1%3a16.b.2_i386.deb is uptodate
-erlang-base_16.b.2_i386.deb is uptodate
-erlang-common-test_1%3a16.b.2_i386.deb is uptodate
-erlang-common-test_16.b.2_i386.deb is uptodate
-erlang-corba_1%3a16.b.2_i386.deb is uptodate
-erlang-corba_16.b.2_i386.deb is uptodate
-erlang-crypto_1%3a16.b.2_i386.deb is uptodate
-erlang-crypto_16.b.2_i386.deb is uptodate
-erlang-debugger_1%3a16.b.2_i386.deb is uptodate
-erlang-debugger_16.b.2_i386.deb is uptodate
-erlang-dev_1%3a16.b.2_i386.deb is uptodate
-erlang-dev_16.b.2_i386.deb is uptodate
-erlang-dialyzer_1%3a16.b.2_i386.deb is uptodate
-erlang-dialyzer_16.b.2_i386.deb is uptodate
-erlang-diameter_1%3a16.b.2_i386.deb is uptodate
-erlang-diameter_16.b.2_i386.deb is uptodate
-erlang-edoc_1%3a16.b.2_i386.deb is uptodate
-erlang-edoc_16.b.2_i386.deb is uptodate
-erlang-eldap_1%3a16.b.2_i386.deb is uptodate
-erlang-eldap_16.b.2_i386.deb is uptodate
-erlang-erl-docgen_1%3a16.b.2_i386.deb is uptodate
-erlang-erl-docgen_16.b.2_i386.deb is uptodate
-erlang-et_1%3a16.b.2_i386.deb is uptodate
-erlang-et_16.b.2_i386.deb is uptodate
-erlang-eunit_1%3a16.b.2_i386.deb is uptodate
-erlang-eunit_16.b.2_i386.deb is uptodate
-erlang-examples_1%3a16.b.2_all.deb is uptodate
-erlang-examples_16.b.2_all.deb is uptodate
-erlang-gs_1%3a16.b.2_i386.deb is uptodate
-erlang-gs_16.b.2_i386.deb is uptodate
-erlang-ic-java_1%3a16.b.2_all.deb is uptodate
-erlang-ic-java_16.b.2_all.deb is uptodate
-erlang-ic_1%3a16.b.2_i386.deb is uptodate
-erlang-ic_16.b.2_i386.deb is uptodate
-erlang-inets_1%3a16.b.2_i386.deb is uptodate
-erlang-inets_16.b.2_i386.deb is uptodate
-erlang-inviso_1%3a16.b.2_i386.deb is uptodate
-erlang-inviso_16.b.2_i386.deb is uptodate
-erlang-jinterface_1%3a16.b.2_all.deb is uptodate
-erlang-jinterface_16.b.2_all.deb is uptodate
-erlang-megaco_1%3a16.b.2_i386.deb is uptodate
-erlang-megaco_16.b.2_i386.deb is uptodate
-erlang-mnesia_1%3a16.b.2_i386.deb is uptodate
-erlang-mnesia_16.b.2_i386.deb is uptodate
-erlang-mode_1%3a16.b.2_all.deb is uptodate
-erlang-mode_16.b.2_all.deb is uptodate
-erlang-observer_1%3a16.b.2_i386.deb is uptodate
-erlang-observer_16.b.2_i386.deb is uptodate
-erlang-odbc_1%3a16.b.2_i386.deb is uptodate
-erlang-odbc_16.b.2_i386.deb is uptodate
-erlang-os-mon_1%3a16.b.2_i386.deb is uptodate
-erlang-os-mon_16.b.2_i386.deb is uptodate
-erlang-parsetools_1%3a16.b.2_i386.deb is uptodate
-erlang-parsetools_16.b.2_i386.deb is uptodate
-erlang-percept_1%3a16.b.2_i386.deb is uptodate
-erlang-percept_16.b.2_i386.deb is uptodate
-erlang-pman_1%3a16.b.2_i386.deb is uptodate
-erlang-pman_16.b.2_i386.deb is uptodate
-erlang-public-key_1%3a16.b.2_i386.deb is uptodate
-erlang-public-key_16.b.2_i386.deb is uptodate
-erlang-reltool_1%3a16.b.2_i386.deb is uptodate
-erlang-reltool_16.b.2_i386.deb is uptodate
-erlang-runtime-tools_1%3a16.b.2_i386.deb is uptodate
-erlang-runtime-tools_16.b.2_i386.deb is uptodate
-erlang-snmp_1%3a16.b.2_i386.deb is uptodate
-erlang-snmp_16.b.2_i386.deb is uptodate
-erlang-src_1%3a16.b.2_all.deb is uptodate
-erlang-src_16.b.2_all.deb is uptodate
-erlang-ssh_1%3a16.b.2_i386.deb is uptodate
-erlang-ssh_16.b.2_i386.deb is uptodate
-erlang-ssl_1%3a16.b.2_i386.deb is uptodate
-erlang-ssl_16.b.2_i386.deb is uptodate
-erlang-syntax-tools_1%3a16.b.2_i386.deb is uptodate
-erlang-syntax-tools_16.b.2_i386.deb is uptodate
-erlang-test-server_1%3a16.b.2_i386.deb is uptodate
-erlang-test-server_16.b.2_i386.deb is uptodate
-erlang-toolbar_1%3a16.b.2_i386.deb is uptodate
-erlang-toolbar_16.b.2_i386.deb is uptodate
-erlang-tools_1%3a16.b.2_i386.deb is uptodate
-erlang-tools_16.b.2_i386.deb is uptodate
-erlang-tv_1%3a16.b.2_i386.deb is uptodate
-erlang-tv_16.b.2_i386.deb is uptodate
-erlang-typer_1%3a16.b.2_i386.deb is uptodate
-erlang-typer_16.b.2_i386.deb is uptodate
-erlang-webtool_1%3a16.b.2_i386.deb is uptodate
-erlang-webtool_16.b.2_i386.deb is uptodate
-erlang-wx_1%3a16.b.2_i386.deb is uptodate
-erlang-wx_16.b.2_i386.deb is uptodate
-erlang-xmerl_1%3a16.b.2_i386.deb is uptodate
-erlang-xmerl_16.b.2_i386.deb is uptodate
-erlang_1%3a16.b.2_all.deb is uptodate
-erlang_16.b.2_all.deb is uptodate
-firefox-globalmenu_24.0+build1-0ubuntu0.13.04.1_i386.deb is uptodate
-firefox-locale-en_24.0+build1-0ubuntu0.13.04.1_i386.deb is uptodate
-firefox_24.0+build1-0ubuntu0.13.04.1_i386.deb is uptodate
-flashplugin-installer_11.2.202.310ubuntu0.13.04.1_i386.deb is uptodate
-gcj-4.7-base_4.7.3-1ubuntu1_i386.deb is uptodate
-gir1.2-gudev-1.0_198-0ubuntu11.2_i386.deb is uptodate
-gir1.2-nautilus-3.0_1%3a3.6.3-0ubuntu16_i386.deb is uptodate
-gir1.2-nautilus-3.0_3.6.3-0ubuntu16_i386.deb is uptodate
-google-chrome-stable_29.0.1547.62-r219432_i386.deb is uptodate
-google-chrome-stable_29.0.1547.76-r223446_i386.deb is uptodate
-hal_0.5.14-8ubuntu1_i386.deb is uptodate
-hplip-data_3.13.3-1ubuntu0.1_all.deb is uptodate
-hplip_3.13.3-1ubuntu0.1_i386.deb is uptodate
-icedtea-7-jre-jamvm_7u25-2.3.10-1ubuntu0.13.04.2_i386.deb is uptodate
-imagemagick-common_8%3a6.7.7.10-5ubuntu2.1_all.deb is uptodate
-imagemagick_8%3a6.7.7.10-5ubuntu2.1_i386.deb is uptodate
-language-selector-common_0.110.1_all.deb is uptodate
-language-selector-gnome_0.110.1_all.deb is uptodate
-libapache2-mod-php5_5.4.9-4ubuntu2.2_i386.deb is uptodate
-libapache2-mod-php5_5.4.9-4ubuntu2.3_i386.deb is uptodate
-libapt-inst1.5_0.9.7.7ubuntu5_i386.deb is uptodate
-libapt-pkg4.12_0.9.7.7ubuntu5_i386.deb is uptodate
-libasn1-8-heimdal_1.6~git20120403+dfsg1-2ubuntu0.13.04.1_i386.deb is uptodate
-libcurl3-gnutls_7.29.0-1ubuntu3.2_i386.deb is uptodate
-libcurl3_7.29.0-1ubuntu3.2_i386.deb is uptodate
-libegl1-mesa-drivers_9.1.4-0ubuntu0.1_i386.deb is uptodate
-libegl1-mesa_9.1.4-0ubuntu0.1_i386.deb is uptodate
-libgbm1_9.1.4-0ubuntu0.1_i386.deb is uptodate
-libgcj-bc_4.7.3-1ubuntu10_i386.deb is uptodate
-libgcj-common_1%3a4.7.3-1ubuntu10_all.deb is uptodate
-libgcj13_4.7.3-1ubuntu1_i386.deb is uptodate
-libgksu2-0_2.0.13~pre1-6ubuntu2.1_i386.deb is uptodate
-libgl1-mesa-dri_9.1.4-0ubuntu0.1_i386.deb is uptodate
-libgl1-mesa-glx_9.1.4-0ubuntu0.1_i386.deb is uptodate
-libglapi-mesa_9.1.4-0ubuntu0.1_i386.deb is uptodate
-libgles2-mesa_9.1.4-0ubuntu0.1_i386.deb is uptodate
-libgssapi3-heimdal_1.6~git20120403+dfsg1-2ubuntu0.13.04.1_i386.deb is uptodate
-libgudev-1.0-0_1%3a198-0ubuntu11.2_i386.deb is uptodate
-libguicast1-cv_1%3a2.2-0.14~ppa1~raring3_i386.deb is uptodate
-libhal-storage1_0.5.14-8ubuntu1_i386.deb is uptodate
-libhal1_0.5.14-8ubuntu1_i386.deb is uptodate
-libhcrypto4-heimdal_1.6~git20120403+dfsg1-2ubuntu0.13.04.1_i386.deb is uptodate
-libheimbase1-heimdal_1.6~git20120403+dfsg1-2ubuntu0.13.04.1_i386.deb is uptodate
-libheimntlm0-heimdal_1.6~git20120403+dfsg1-2ubuntu0.13.04.1_i386.deb is uptodate
-libhpmud0_3.13.3-1ubuntu0.1_i386.deb is uptodate
-libhx509-5-heimdal_1.6~git20120403+dfsg1-2ubuntu0.13.04.1_i386.deb is uptodate
-libkdecore5_4%3a4.10.5-0ubuntu0.1_i386.deb is uptodate
-libkrb5-26-heimdal_1.6~git20120403+dfsg1-2ubuntu0.13.04.1_i386.deb is uptodate
-liblightdm-gobject-1-0_1.6.0-0ubuntu3.1_i386.deb is uptodate
-libmagick++5_8%3a6.7.7.10-5ubuntu2.1_i386.deb is uptodate
-libmagickcore5-extra_8%3a6.7.7.10-5ubuntu2.1_i386.deb is uptodate
-libmagickcore5_8%3a6.7.7.10-5ubuntu2.1_i386.deb is uptodate
-libmagickwand5_8%3a6.7.7.10-5ubuntu2.1_i386.deb is uptodate
-libmpeg3cine-cv_1%3a2.2-0.14~ppa1~raring3_i386.deb is uptodate
-libmysqlclient18_5.5.32-0ubuntu0.13.04.1_i386.deb is uptodate
-libopenvg1-mesa_9.1.4-0ubuntu0.1_i386.deb is uptodate
-libpolkit-agent-1-0_0.105-1ubuntu1.1_i386.deb is uptodate
-libpolkit-backend-1-0_0.105-1ubuntu1.1_i386.deb is uptodate
-libpolkit-gobject-1-0_0.105-1ubuntu1.1_i386.deb is uptodate
-libqt4-dbus_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb is uptodate
-libqt4-declarative_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb is uptodate
-libqt4-designer_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768   0%  820.51kB/s    0:00:04       3639850 100%   17.44MB/s    0:00:00 (xfer#2, to-check=1736/1935)
-libqt4-help_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768  15%  146.79kB/s    0:00:01        207170 100%  919.61kB/s    0:00:00 (xfer#3, to-check=1735/1935)
-libqt4-network_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768   5%   89.64kB/s    0:00:05        552016 100%    1.33MB/s    0:00:00 (xfer#4, to-check=1734/1935)
-libqt4-opengl_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768  10%   78.82kB/s    0:00:03        303202 100%  696.70kB/s    0:00:00 (xfer#5, to-check=1733/1935)
-libqt4-script_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768   4%   72.89kB/s    0:00:10        811302 100%    1.60MB/s    0:00:00 (xfer#6, to-check=1732/1935)
-libqt4-scripttools_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768  14%   63.37kB/s    0:00:03        225870 100%  432.50kB/s    0:00:00 (xfer#7, to-check=1731/1935)
-libqt4-sql-sqlite_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       24050 100%   44.65kB/s    0:00:00         24050 100%   44.57kB/s    0:00:00 (xfer#8, to-check=1730/1935)
-libqt4-sql_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768  32%   58.18kB/s    0:00:01         99810 100%  176.58kB/s    0:00:00 (xfer#9, to-check=1729/1935)
-libqt4-svg_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768  23%   57.14kB/s    0:00:01        138802 100%  240.76kB/s    0:00:00 (xfer#10, to-check=1728/1935)
-libqt4-test_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768  52%   54.42kB/s    0:00:00         61900 100%  102.63kB/s    0:00:00 (xfer#11, to-check=1727/1935)
-libqt4-xml_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768  35%   52.37kB/s    0:00:01         93496 100%  149.43kB/s    0:00:00 (xfer#12, to-check=1726/1935)
-libqt4-xmlpatterns_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768   3%   50.24kB/s    0:00:20       1050306 100%    1.43MB/s    0:00:00 (xfer#13, to-check=1725/1935)
-libqtcore4_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768   1%   43.48kB/s    0:00:47       2102450 100%    2.48MB/s    0:00:00 (xfer#14, to-check=1724/1935)
-libqtgui4_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       32768   0%   38.69kB/s    0:01:46       3702784  89%    3.52MB/s    0:00:00       4141138 100%    3.89MB/s    0:00:01 (xfer#15, to-check=1723/1935)
-libquicktimecine-cv_1%3a2.2-0.14~ppa1~raring3_i386.deb
-       32768  15%  864.86kB/s    0:00:00        208800 100%    4.86MB/s    0:00:00 (xfer#16, to-check=1722/1935)
-libraw5_0.14.7-0ubuntu1.13.04.2_i386.deb
-       32768  10%  470.59kB/s    0:00:00        315316 100%    3.91MB/s    0:00:00 (xfer#17, to-check=1721/1935)
-libroken18-heimdal_1.6~git20120403+dfsg1-2ubuntu0.13.04.1_i386.deb
-       32768  69%  329.90kB/s    0:00:00         47060 100%  473.78kB/s    0:00:00 (xfer#18, to-check=1720/1935)
-libsane-hpaio_3.13.3-1ubuntu0.1_i386.deb
-       32768  23%  275.86kB/s    0:00:00        137058 100%    1.10MB/s    0:00:00 (xfer#19, to-check=1719/1935)
-libsmbclient_2%3a3.6.9-1ubuntu1.1_i386.deb
-       32768   2%  214.77kB/s    0:00:06       1424574 100%    6.29MB/s    0:00:00 (xfer#20, to-check=1718/1935)
-libsystemd-daemon0_198-0ubuntu11.2_i386.deb
-        8688 100%   38.05kB/s    0:00:00          8688 100%   38.05kB/s    0:00:00 (xfer#21, to-check=1717/1935)
-libtiff-tools_4.0.2-4ubuntu2.1_i386.deb
-       32768  12%  132.78kB/s    0:00:01        263060 100%    1.02MB/s    0:00:00 (xfer#22, to-check=1716/1935)
-libudev1_198-0ubuntu11.2_i386.deb
-       32768  87%  122.61kB/s    0:00:00         37276 100%  138.94kB/s    0:00:00 (xfer#23, to-check=1715/1935)
-libwbclient0_2%3a3.6.9-1ubuntu1.1_i386.deb
-       25848 100%   92.80kB/s    0:00:00         25848 100%   92.80kB/s    0:00:00 (xfer#24, to-check=1714/1935)
-libwind0-heimdal_1.6~git20120403+dfsg1-2ubuntu0.13.04.1_i386.deb
-       32768  42%  109.97kB/s    0:00:00         77476 100%  259.11kB/s    0:00:00 (xfer#25, to-check=1713/1935)
-libxatracker1_9.1.4-0ubuntu0.1_i386.deb
-       32768  24%  103.23kB/s    0:00:01        136184 100%  424.90kB/s    0:00:00 (xfer#26, to-check=1712/1935)
-lightdm_1.6.0-0ubuntu3.1_i386.deb
-       32768  32%   94.96kB/s    0:00:00        101094 100%  291.22kB/s    0:00:00 (xfer#27, to-check=1711/1935)
-linux-generic_3.8.0.30.48_i386.deb
-        1724 100%    4.82kB/s    0:00:00          1724 100%    4.82kB/s    0:00:00 (xfer#28, to-check=1710/1935)
-linux-headers-3.8.0-30-generic_3.8.0-30.44_i386.deb
-       32768   3%   86.72kB/s    0:00:11       1002430 100%    2.33MB/s    0:00:00 (xfer#29, to-check=1709/1935)
-linux-headers-3.8.0-30_3.8.0-30.44_all.deb
-       32768   0%   73.73kB/s    0:02:44       8159232  67%    5.86MB/s    0:00:00      12177334 100%    6.29MB/s    0:00:01 (xfer#30, to-check=1708/1935)
-linux-headers-generic_3.8.0.30.48_i386.deb
-        2286 100%    4.19kB/s    0:00:00          2286 100%    4.18kB/s    0:00:00 (xfer#31, to-check=1707/1935)
-linux-image-3.8.0-30-generic_3.8.0-30.44_i386.deb
-       32768   0%   57.66kB/s    0:03:34       9994240  80%    9.52MB/s    0:00:00      12418084 100%   10.65MB/s    0:00:01 (xfer#32, to-check=1706/1935)
-linux-image-extra-3.8.0-30-generic_3.8.0-30.44_i386.deb
-       32768   0%  256.00kB/s    0:01:59       5799936  18%    5.49MB/s    0:00:04      27295744  89%   11.63MB/s    0:00:00      30550740 100%   10.18MB/s    0:00:02 (xfer#33, to-check=1705/1935)
-linux-image-generic_3.8.0.30.48_i386.deb
-        2296 100%    3.56kB/s    0:00:00          2296 100%    3.56kB/s    0:00:00 (xfer#34, to-check=1704/1935)
-linux-libc-dev_3.8.0-30.44_i386.deb
-       32768   3%   49.00kB/s    0:00:18        926158 100%    1.26MB/s    0:00:00 (xfer#35, to-check=1703/1935)
-rsync: send_files failed to open "/var/cache/apt/archives/lock": Permission denied (13)
-lsb-base_4.0-0ubuntu27.3_all.deb
-       10374 100%   13.84kB/s    0:00:00         10374 100%   13.84kB/s    0:00:00 (xfer#37, to-check=1701/1935)
-lsb-release_4.0-0ubuntu27.3_all.deb
-       10916 100%   14.33kB/s    0:00:00         10916 100%   14.33kB/s    0:00:00 (xfer#38, to-check=1700/1935)
-midori_0.5.5-1~raring~ppa1_i386.deb
-       32768   2%   41.50kB/s    0:00:37       1599890 100%    1.82MB/s    0:00:00 (xfer#39, to-check=1699/1935)
-mysql-client-5.5_5.5.32-0ubuntu0.13.04.1_i386.deb
-       32768   0%   37.43kB/s    0:03:34       3702784  45%    3.51MB/s    0:00:01       8077002 100%    6.47MB/s    0:00:01 (xfer#40, to-check=1698/1935)
-mysql-client-core-5.5_5.5.32-0ubuntu0.13.04.1_i386.deb
-       32768   1%  157.64kB/s    0:00:11       1855046 100%    6.58MB/s    0:00:00 (xfer#41, to-check=1697/1935)
-mysql-client_5.5.32-0ubuntu0.13.04.1_all.deb
-       11410 100%   39.37kB/s    0:00:00         11410 100%   39.37kB/s    0:00:00 (xfer#42, to-check=1696/1935)
-mysql-common_5.5.32-0ubuntu0.13.04.1_all.deb
-       13340 100%   44.16kB/s    0:00:00         13340 100%   44.16kB/s    0:00:00 (xfer#43, to-check=1695/1935)
-mysql-server-5.5_5.5.32-0ubuntu0.13.04.1_i386.deb
-       32768   0%  102.89kB/s    0:01:24       6062080  69%    5.36MB/s    0:00:00       8706912 100%    5.79MB/s    0:00:01 (xfer#44, to-check=1694/1935)
-mysql-server-core-5.5_5.5.32-0ubuntu0.13.04.1_i386.deb
-       32768   0%   86.72kB/s    0:01:05       5672770 100%    8.21MB/s    0:00:00 (xfer#45, to-check=1693/1935)
-mysql-server_5.5.32-0ubuntu0.13.04.1_all.deb
-       11534 100%   16.89kB/s    0:00:00         11534 100%   16.89kB/s    0:00:00 (xfer#46, to-check=1692/1935)
-openjdk-7-jre-headless_7u25-2.3.10-1ubuntu0.13.04.2_i386.deb
-       32768   0%   46.44kB/s    0:13:36       7503872  19%    7.16MB/s    0:00:04      13926400  36%    6.27MB/s    0:00:03      34111488  89%   10.44MB/s    0:00:00      37944656 100%    9.12MB/s    0:00:03 (xfer#47, to-check=1691/1935)
-openjdk-7-jre-lib_7u25-2.3.10-1ubuntu0.13.04.2_all.deb
-       32768   0%   36.36kB/s    0:02:31       2392064  43%    2.28MB/s    0:00:01       5541284 100%    4.38MB/s    0:00:01 (xfer#48, to-check=1690/1935)
-openjdk-7-jre_7u25-2.3.10-1ubuntu0.13.04.2_i386.deb
-       32768  14%  142.22kB/s    0:00:01        225378 100%  956.94kB/s    0:00:00 (xfer#49, to-check=1689/1935)
-perlmagick_8%3a6.7.7.10-5ubuntu2.1_i386.deb
-       32768  20%  121.21kB/s    0:00:01        157410 100%  580.08kB/s    0:00:00 (xfer#50, to-check=1688/1935)
-phatch-cli_0.2.7.1-1ubuntu0.1_all.deb
-       32768   0%  107.38kB/s    0:00:30       3283260 100%    6.46MB/s    0:00:00 (xfer#51, to-check=1687/1935)
-phatch_0.2.7.1-1ubuntu0.1_all.deb
-       32768  14%   62.50kB/s    0:00:03        226358 100%  427.57kB/s    0:00:00 (xfer#52, to-check=1686/1935)
-php5-cli_5.4.9-4ubuntu2.2_i386.deb
-       32768   1%   59.04kB/s    0:00:44       2674956 100%    3.94MB/s    0:00:00 (xfer#53, to-check=1685/1935)
-php5-cli_5.4.9-4ubuntu2.3_i386.deb
-       32768   1%   48.05kB/s    0:00:54       2672604 100%    3.23MB/s    0:00:00 (xfer#54, to-check=1684/1935)
-php5-common_5.4.9-4ubuntu2.2_i386.deb
-       32768   7%   39.31kB/s    0:00:10        430552 100%  502.94kB/s    0:00:00 (xfer#55, to-check=1683/1935)
-php5-common_5.4.9-4ubuntu2.3_i386.deb
-       32768   7%   36.91kB/s    0:00:10        429430 100%  477.64kB/s    0:00:00 (xfer#56, to-check=1682/1935)
-php5_5.4.9-4ubuntu2.2_all.deb
-        1068 100%    1.16kB/s    0:00:00          1068 100%    1.16kB/s    0:00:00 (xfer#57, to-check=1681/1935)
-php5_5.4.9-4ubuntu2.3_all.deb
-        1066 100%    1.14kB/s    0:00:00          1066 100%    1.14kB/s    0:00:00 (xfer#58, to-check=1680/1935)
-pidgin-data_1%3a2.10.7-0ubuntu4.1_all.deb
-       32768   3%   33.90kB/s    0:00:28        997744 100%  978.27kB/s    0:00:00 (xfer#59, to-check=1679/1935)
-pidgin_1%3a2.10.7-0ubuntu4.1_i386.deb
-       32768   6%   31.56kB/s    0:00:14         65536  13%   63.05kB/s    0:00:06        491558 100%  462.46kB/s    0:00:01 (xfer#60, to-check=1678/1935)
-policykit-1_0.105-1ubuntu1.1_i386.deb
-       32768  58%  627.45kB/s    0:00:00         56430 100%    1.03MB/s    0:00:00 (xfer#61, to-check=1677/1935)
-printer-driver-hpcups_3.13.3-1ubuntu0.1_i386.deb
-       32768  10%  444.44kB/s    0:00:00        315414 100%    3.27MB/s    0:00:00 (xfer#62, to-check=1676/1935)
-printer-driver-postscript-hp_3.13.3-1ubuntu0.1_all.deb
-       32768   4%  275.86kB/s    0:00:02        771662 100%    4.94MB/s    0:00:00 (xfer#63, to-check=1675/1935)
-python-httplib2_0.7.7-1ubuntu0.1_all.deb
-       32768  80%  205.13kB/s    0:00:00         40796 100%  255.38kB/s    0:00:00 (xfer#64, to-check=1674/1935)
-python-numpy_1%3a1.7.1-1ubuntu1_i386.deb
-       32768   1%  180.79kB/s    0:00:10       2017054 100%    2.16MB/s    0:00:00 (xfer#65, to-check=1673/1935)
-python-openssl_0.13-2ubuntu3.1_i386.deb
-       32768  32%   35.13kB/s    0:00:01        102322 100%  109.45kB/s    0:00:00 (xfer#66, to-check=1672/1935)
-python-pyparsing_1.5.7+dfsg1-0ubuntu2_all.deb
-       32768  84%   34.30kB/s    0:00:00         38950 100%   40.72kB/s    0:00:00 (xfer#67, to-check=1671/1935)
-python3-distupgrade_1%3a0.192.13_all.deb
-       32768  22%   33.37kB/s    0:00:03        143150 100%  145.32kB/s    0:00:00 (xfer#68, to-check=1670/1935)
-python3-httplib2_0.7.7-1ubuntu0.1_all.deb
-       29930 100%   29.67kB/s    0:00:00         29930 100%   29.64kB/s    0:00:00 (xfer#69, to-check=1669/1935)
-python3-software-properties_0.92.17.3_all.deb
-       18358 100%   18.16kB/s    0:00:00         18358 100%   18.16kB/s    0:00:00 (xfer#70, to-check=1668/1935)
-python3-update-manager_1%3a0.186.2_all.deb
-       32768  96%   31.94kB/s    0:00:00         33854 100%   32.96kB/s    0:00:00         33854 100%   32.96kB/s    0:00:01 (xfer#71, to-check=1667/1935)
-qdbus_4%3a4.8.4+dfsg-0ubuntu9.4_i386.deb
-       29472 100%    3.12MB/s    0:00:00         29472 100%    3.12MB/s    0:00:00 (xfer#72, to-check=1666/1935)
-rhythmbox-plugin-complete_0.1-20_i386.deb
-        2944 100%  115.00kB/s    0:00:00          2944 100%  115.00kB/s    0:00:00 (xfer#73, to-check=1665/1935)
-rhythmbox-plugin-countdown-playlist_0.2-1_all.deb
-       22862 100%  656.65kB/s    0:00:00         22862 100%  656.65kB/s    0:00:00 (xfer#74, to-check=1664/1935)
-rhythmbox-plugin-countdown-playlist_0.2-2_all.deb
-       22900 100%  447.27kB/s    0:00:00         22900 100%  438.50kB/s    0:00:00 (xfer#75, to-check=1663/1935)
-rhythmbox-plugin-coverart-browser_0.9-2_all.deb
-       32768   3%  421.05kB/s    0:00:02       1019350 100%    6.94MB/s    0:00:00 (xfer#76, to-check=1662/1935)
-rhythmbox-plugin-coverart-search_0.9-1_all.deb
-       32768  88%  190.48kB/s    0:00:00         36818 100%  214.02kB/s    0:00:00 (xfer#77, to-check=1661/1935)
-rhythmbox-plugin-equalizer_0.3-1_all.deb
-       21522 100%  123.63kB/s    0:00:00         21522 100%  123.63kB/s    0:00:00 (xfer#78, to-check=1660/1935)
-rhythmbox-plugin-equalizer_0.3-2_all.deb
-       21136 100%  120.00kB/s    0:00:00         21136 100%  120.00kB/s    0:00:00 (xfer#79, to-check=1659/1935)
-rhythmbox-plugin-fullscreen_0.5-1_all.deb
-       24930 100%  139.92kB/s    0:00:00         24930 100%  139.92kB/s    0:00:00 (xfer#80, to-check=1658/1935)
-rhythmbox-plugin-hide_0.1-2_all.deb
-        4690 100%   26.02kB/s    0:00:00          4690 100%   26.02kB/s    0:00:00 (xfer#81, to-check=1657/1935)
-rhythmbox-plugin-jumptowindow_0.2-1_all.deb
-       23966 100%  130.75kB/s    0:00:00         23966 100%  130.75kB/s    0:00:00 (xfer#82, to-check=1656/1935)
-rhythmbox-plugin-llyrics_0.4-1ubuntu2_all.deb
-       32768  72%  174.86kB/s    0:00:00         45126 100%  240.81kB/s    0:00:00 (xfer#83, to-check=1655/1935)
-rhythmbox-plugin-microblogger_0.3-1ubuntu1_all.deb
-       17276 100%   91.20kB/s    0:00:00         17276 100%   91.20kB/s    0:00:00 (xfer#84, to-check=1654/1935)
-rhythmbox-plugin-opencontainingfolder_0.2-3~rb2_all.deb
-       21200 100%  110.12kB/s    0:00:00         21200 100%  110.12kB/s    0:00:00 (xfer#85, to-check=1653/1935)
-rhythmbox-plugin-opencontainingfolder_0.2-4~rb2_all.deb
-       21252 100%  109.23kB/s    0:00:00         21252 100%  109.23kB/s    0:00:00 (xfer#86, to-check=1652/1935)
-rhythmbox-plugin-radio-browser_0.2-4_all.deb
-       32768  88%  164.95kB/s    0:00:00         37106 100%  185.83kB/s    0:00:00 (xfer#87, to-check=1651/1935)
-rhythmbox-plugin-randomalbumplayer_0.2-1_all.deb
-       10942 100%   54.52kB/s    0:00:00         10942 100%   54.52kB/s    0:00:00 (xfer#88, to-check=1650/1935)
-rhythmbox-plugin-rating-filters_0.2-2~rb298_all.deb
-       29832 100%  141.42kB/s    0:00:00         29832 100%  140.74kB/s    0:00:00 (xfer#89, to-check=1649/1935)
-rhythmbox-plugin-rhythmweb_0.4-1_all.deb
-       32768  30%  131.15kB/s    0:00:00        109210 100%  433.54kB/s    0:00:00 (xfer#90, to-check=1648/1935)
-rhythmbox-plugin-screensaver_0.2-1_all.deb
-        2826 100%   11.17kB/s    0:00:00          2826 100%   11.13kB/s    0:00:00 (xfer#91, to-check=1647/1935)
-rhythmbox-plugin-seek_0.1-1_all.deb
-        7812 100%   30.64kB/s    0:00:00          7812 100%   30.64kB/s    0:00:00 (xfer#92, to-check=1646/1935)
-rhythmbox-plugin-send-first_0.2-1_all.deb
-        8766 100%   34.24kB/s    0:00:00          8766 100%   34.24kB/s    0:00:00 (xfer#93, to-check=1645/1935)
-rhythmbox-plugin-smallwindow_0.2-1ubuntu1_all.deb
-       12112 100%   46.20kB/s    0:00:00         12112 100%   46.20kB/s    0:00:00 (xfer#94, to-check=1644/1935)
-rhythmbox-plugin-suspend_0.2-2_all.deb
-       11574 100%   43.81kB/s    0:00:00         11574 100%   43.81kB/s    0:00:00 (xfer#95, to-check=1643/1935)
-rhythmbox-plugin-suspend_0.2-3_all.deb
-       11334 100%   42.57kB/s    0:00:00         11334 100%   42.57kB/s    0:00:00 (xfer#96, to-check=1642/1935)
-rhythmbox-plugin-wikipedia_0.1-2~rb2_all.deb
-       21918 100%   82.01kB/s    0:00:00         21918 100%   81.70kB/s    0:00:00 (xfer#97, to-check=1641/1935)
-rhythmbox-plugin-wikipedia_0.1-3~rb2_all.deb
-       21972 100%   81.59kB/s    0:00:00         21972 100%   81.59kB/s    0:00:00 (xfer#98, to-check=1640/1935)
-rtkit_0.10-2ubuntu0.13.04.1_i386.deb
-       32768  90%  120.75kB/s    0:00:00         36382 100%  134.07kB/s    0:00:00 (xfer#99, to-check=1639/1935)
-samba-common-bin_2%3a3.6.9-1ubuntu1.1_i386.deb
-       32768   1%  111.50kB/s    0:00:28       3160680 100%    6.80MB/s    0:00:00 (xfer#100, to-check=1638/1935)
-samba-common_2%3a3.6.9-1ubuntu1.1_all.deb
-       32768  19%   69.87kB/s    0:00:01        172330 100%  365.85kB/s    0:00:00 (xfer#101, to-check=1637/1935)
-smbclient_2%3a3.6.9-1ubuntu1.1_i386.deb
-       32768   0%   65.31kB/s    0:01:24       5526524 100%    6.72MB/s    0:00:00 (xfer#102, to-check=1636/1935)
-software-properties-common_0.92.17.3_all.deb
-       10344 100%   12.67kB/s    0:00:00         10344 100%   12.66kB/s    0:00:00 (xfer#103, to-check=1635/1935)
-software-properties-gtk_0.92.17.3_all.deb
-       32768  75%   39.95kB/s    0:00:00         43324 100%   52.82kB/s    0:00:00 (xfer#104, to-check=1634/1935)
-std.log
-        8079 100%    9.84kB/s    0:00:00          8079 100%    9.84kB/s    0:00:00 (xfer#105, to-check=1633/1935)
-sublime-text-installer_3047-2~webupd8~3_all.deb
-        9542 100%   11.43kB/s    0:00:00          9542 100%   11.43kB/s    0:00:00 (xfer#106, to-check=1632/1935)
-systemd-services_198-0ubuntu11.2_i386.deb
-       32768   9%   37.87kB/s    0:00:07        334332 100%  377.89kB/s    0:00:00 (xfer#107, to-check=1631/1935)
-tagtool_0.12.3-8.1ubuntu1_i386.deb
-       32768  16%   35.91kB/s    0:00:04        197300 100%  215.28kB/s    0:00:00 (xfer#108, to-check=1630/1935)
-tcl-lib_8.5.0-2ubuntu5_i386.deb
-        4748 100%    5.12kB/s    0:00:00          4748 100%    5.12kB/s    0:00:00 (xfer#109, to-check=1629/1935)
-tcl8.5-lib_8.5.13-1ubuntu4_i386.deb
-       32768   6%   34.48kB/s    0:00:14        544216 100%  557.67kB/s    0:00:00 (xfer#110, to-check=1628/1935)
-tcl8.5_8.5.13-1ubuntu4_i386.deb
-       32768   5%   33.06kB/s    0:00:16        557056  98%  541.83kB/s    0:00:00        565600 100%  549.60kB/s    0:00:01 (xfer#111, to-check=1627/1935)
-tcl_8.5.0-2ubuntu5_i386.deb
-        3210 100%    3.06MB/s    0:00:00          3210 100%    3.06MB/s    0:00:00 (xfer#112, to-check=1626/1935)
-thunderbird-globalmenu_1%3a24.0+build1-0ubuntu0.13.04.1_i386.deb
-        8782 100%    4.19MB/s    0:00:00          8782 100%    4.19MB/s    0:00:00 (xfer#113, to-check=1625/1935)
-thunderbird-gnome-support_1%3a24.0+build1-0ubuntu0.13.04.1_i386.deb
-        9124 100%  636.44kB/s    0:00:00          9124 100%  636.44kB/s    0:00:00 (xfer#114, to-check=1624/1935)
-thunderbird_1%3a24.0+build1-0ubuntu0.13.04.1_i386.deb
-       32768   0% 1000.00kB/s    0:00:28       8159232  28%    7.45MB/s    0:00:02      25427968  87%   11.87MB/s    0:00:00      29025042 100%   12.56MB/s    0:00:02 (xfer#115, to-check=1623/1935)
-tk-lib_8.5.0-2ubuntu5_i386.deb
-        4680 100%   25.25kB/s    0:00:00          4680 100%   25.25kB/s    0:00:00 (xfer#116, to-check=1622/1935)
-tk8.5-lib_8.5.11-2ubuntu4_i386.deb
-       32768   5%  152.38kB/s    0:00:03        560156 100%  696.85kB/s    0:00:00 (xfer#117, to-check=1621/1935)
-tk8.5_8.5.11-2ubuntu4_i386.deb
-       32768   7%   39.22kB/s    0:00:10        444528 100%  518.03kB/s    0:00:00 (xfer#118, to-check=1620/1935)
-tk_8.5.0-2ubuntu5_i386.deb
-        3246 100%    3.70kB/s    0:00:00          3246 100%    3.70kB/s    0:00:00 (xfer#119, to-check=1619/1935)
-tzdata-java_2013d-0ubuntu0.13.04_all.deb
-       32768  23%   36.41kB/s    0:00:02        140588 100%  155.66kB/s    0:00:00 (xfer#120, to-check=1618/1935)
-tzdata_2013d-0ubuntu0.13.04_all.deb
-       32768   6%   35.20kB/s    0:00:13        493650 100%  522.30kB/s    0:00:00 (xfer#121, to-check=1617/1935)
-ubuntu-release-upgrader-core_1%3a0.192.13_all.deb
-       23928 100%   25.05kB/s    0:00:00         23928 100%   25.05kB/s    0:00:00 (xfer#122, to-check=1616/1935)
-ubuntu-release-upgrader-gtk_1%3a0.192.13_all.deb
-       11112 100%   11.56kB/s    0:00:00         11112 100%   11.56kB/s    0:00:00 (xfer#123, to-check=1615/1935)
-ubuntu-system-service_0.2.4.1_all.deb
-        9848 100%   10.09kB/s    0:00:00          9848 100%   10.09kB/s    0:00:00 (xfer#124, to-check=1614/1935)
-update-manager-core_1%3a0.186.2_all.deb
-        5192 100%    5.31kB/s    0:00:00          5192 100%    5.31kB/s    0:00:00 (xfer#125, to-check=1613/1935)
-update-manager_1%3a0.186.2_all.deb
-       32768   5%   32.59kB/s    0:00:17        294912  49%  288.00kB/s    0:00:01        594930 100%  569.59kB/s    0:00:01 (xfer#126, to-check=1612/1935)
-usb-creator-common_0.2.47.1_i386.deb
-       24914 100%  333.29kB/s    0:00:00         24914 100%  333.29kB/s    0:00:00 (xfer#127, to-check=1611/1935)
-usb-creator-gtk_0.2.47.1_i386.deb
-       27178 100%  353.88kB/s    0:00:00         27178 100%  353.88kB/s    0:00:00 (xfer#128, to-check=1610/1935)
-youtube-dl_2012.09.27+dfsg1-1_all.deb
-       32768  64%  336.84kB/s    0:00:00         50562 100%  519.76kB/s    0:00:00 (xfer#129, to-check=1609/1935)
-partial/default-jre-headless_1%3a1.7-43ubuntu4_i386.deb.FAILED
-        3160 100%   27.80kB/s    0:00:00          3160 100%   27.80kB/s    0:00:00 (xfer#130, to-check=1606/1935)
-partial/icedtea-7-jre-jamvm_7u25-2.3.10-1ubuntu0.13.04.2_i386.deb.FAILED
-       32768   5%  217.69kB/s    0:00:02        595772 100%    3.02MB/s    0:00:00 (xfer#131, to-check=1605/1935)
-partial/thunderbird_1%3a24.0+build1-0ubuntu0.13.04.1_i386.deb.FAILED
-       32768   0%  148.84kB/s    0:03:14      17858560  61%   16.96MB/s    0:00:00  rsync error: received SIGINT, SIGTERM, or SIGHUP (code 20) at rsync.c(549) [sender=3.0.9]
-
