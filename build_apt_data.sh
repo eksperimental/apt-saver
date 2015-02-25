@@ -69,7 +69,7 @@ build_apt_data_packages() {
 	"local" )
 		#packages already installed in our local repository build by the command
 		#fakeroot -u ls "$REPO_DIR"/*.deb 2> /dev/null | xargs -n1 basename 2> /dev/null | grep -oP '^[^_]*(?=_)' | sort | uniq > packages.local.list
-		fakeroot -u ls "$REPO_DIR"/*.deb 2> /dev/null | xargs -n1 basename 2> /dev/null | grep -oP '^[^_]*(?=_)' | sed 's/\+'"$VERSION_SUFFIX"'//g' | sort | uniq > packages.local.list
+		fakeroot -u ls "$REPO_DIR"/*.deb 2> /dev/null | xargs -n1 basename 2> /dev/null | grep -oP '^[^_]*(?=_)' | sed 's/'"$VERSION_SUFFIX"'//g' | sort | uniq > packages.local.list
 	;;
 
 	"manifest" )

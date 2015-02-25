@@ -26,6 +26,7 @@ global_variables() {
     APP_VERSION="0.0.1"
     APP_DESCRIPTION=""
 	OUTPUT_DIR="${APP_DIR}"
+	APP_CONFIG_FILE="${APP_DIR}/${APP_NAME}.config"
 
 	BUILD_REPOSITORY_OPTIONS="auto cached current default explicit manifest manual local repack available only removed"
 	#valid_opt='help, copy-packages, build-repository, build-data, repack, update, purge, config, build, add-source, remove-source, version, run-all'
@@ -34,7 +35,8 @@ global_variables() {
 	DEAD_TIME=0
 	INDEX_BUILT=false
 	#VERSION_SUFFIX=$( echo "$APP_NAME""$HOSTNAME" | sed 's/[^0-9a-zA-Z]//g' )
-	VERSION_SUFFIX=$( printf "repacked-%s" $( echo "$APP_NAME""$HOSTNAME" | sed 's/[^0-9a-zA-Z]//g' ) )
+	#VERSION_SUFFIX=$( printf "~repacked-%s" $( echo "$APP_NAME""$HOSTNAME" | sed 's/[^0-9a-zA-Z]//g' ) )
+	VERSION_SUFFIX="~repacked"
 }
 
 set_configurable_vars() {
@@ -52,8 +54,6 @@ set_configurable_vars() {
 	REPOSITORY_SOURCE_LINE="deb file:$REPO_DIR_REL ./"
 
 	#FILES
-	if [ -z ${APP_CONFIG_FILE+x} ]; then 
-		APP_CONFIG_FILE="$APP_DIR/$APP_NAME.config"; fi
 	if [ -z ${PACKAGES_GZ_FILE+x} ]; then 
 		PACKAGES_GZ_FILE="$REPO_DIR/Packages.gz"; fi
 	if [ -z ${REPOSITORY_SOURCE_FILE+x} ]; then 
@@ -254,7 +254,7 @@ app() {
 			cat "$f" "$DATA_DIR"/to_install.not_found.list | sort | uniq > to_install.error.list
 		fi			
 
-		#determine packages installed in this run
+		#determine packages installed on this run
 		get_files_local > installed.final.files
 		get_list_local installed.final.files > installed.final.list
 		comm -23 installed.final.list packages.local.list | tr -d " \t" | sort | uniq > installed.new.list
@@ -268,8 +268,8 @@ app() {
 		echo ""
 		local elapsed_time=$(($(date +%s)-$EXECUTION_TIME-$DEAD_TIME))
 		echo "All Done! (in "$(display_time $elapsed_time)")"
-		echo "- Built "$(get_number_of_lines "$DATA_DIR/installed.new.files")" package(s)"
-		echo "- Indexed "$(get_number_of_lines "$DATA_DIR/installed.final.files")" package(s)"
+		echo "- Built "$(get_number_of_lines "$DATA_DIR/installed.new.list")" package(s)"
+		echo "- Indexed "$(get_number_of_lines "$DATA_DIR/installed.final.list")" package(s)"
 		#download
 		[[ -s "$DATA_DIR/installed.step4.list" ]] && echo "- Downloaded "$(get_number_of_lines "$DATA_DIR/installed.step4.list")" package(s)"
 

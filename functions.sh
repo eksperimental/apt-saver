@@ -42,6 +42,7 @@ get_size_files_installed() {
 
 get_files_local() {
 	printf %s "$(fakeroot -u ls "$REPO_DIR"/*.deb 2> /dev/null | xargs -n1 basename 2> /dev/null | sort | uniq)"
+	echo ''
 }
 
 get_list_local() {
@@ -49,6 +50,7 @@ get_list_local() {
 	[[ ! -f "$1" ]] && echo "Please provide valid a file list: $file_list" 1>&2 && exit 1
 	[[ ! -s "$1" ]] && echo '' && return $(true)
 	printf %s "$(cat "$file_list" | grep -oP '^[^_]*(?=_)' | sort | uniq)"
+	echo ''
 }
 
 more_info() {
@@ -101,7 +103,8 @@ capture_dpkg_repack_dir() {
 	if [[ $data =~ $regex ]]; then
 		DPKG_REPACK_DIR="${BASH_REMATCH[1]}"
 	fi
-	echo "$data" | sed 's/dpkg-repack: created \.\/dpkg-repack-[0-9]* for //g'
+	echo "$data" | sed 's/dpkg-repack: created \.\/dpkg-repack-[0-9]* for //g'\
+	 #| sed -e :a -e '/./,$!d;/^\n*$/{$d;N;};/\n$/ba'  #remove trailing new lines
 }
 
 capture_dpkg_deb_package() {
@@ -133,19 +136,20 @@ repack_files() {
 	[[ ! -s "$file_list" ]] && echo '' && return $(true)
 	pushd "$REPO_DIR" 1> /dev/null
 
-	local version_regex="Version: ([^[:space:]]*)"
 	local package_name
 	while IFS= read -r package_name || [[ $package_name ]]; do
 		fakeroot -u dpkg-repack --generate "$package_name" 2>&1 | filter_dpkg | capture_dpkg_repack_dir > >(tee -a "$LOG_STD")
 		if [[ ! -z "$DPKG_REPACK_DIR" ]]; then
 			file="$REPO_DIR/$DPKG_REPACK_DIR/DEBIAN/control"
-			sed -i 's/^Version: .*$/\0+'"$VERSION_SUFFIX"'/g' "$file"
+			sed -i 's/^Version: .*$/\0'"$VERSION_SUFFIX"'/g' "$file"
+			sed -i 's/^\( (Repackaged on .* by dpkg-repack\)\(.)\)$/\1 and '"${APP_NAME}"'\2/g' "$file"
+
 			dpkg --build "$REPO_DIR/$DPKG_REPACK_DIR" "."  2>&1 | filter_dpkg | capture_dpkg_deb_package > >(grep -vP "^dpkg-deb: building package " | tee -a "$LOG_STD") && {
-				DEB_PACKAGE_ORIGINAL=$(echo "$DPKG_DEB_PACKAGE" | sed 's/\+'"$VERSION_SUFFIX"'//g')
-				[[ ! -z "$DPKG_DEB_PACKAGE" && ! -z $DEB_PACKAGE_ORIGINAL ]] && \
-					mv "$REPO_DIR/$DPKG_DEB_PACKAGE" "$REPO_DIR/$DEB_PACKAGE_ORIGINAL"
-				[[ ! -z "$DPKG_REPACK_DIR" ]] && \
-					rm -fr "$REPO_DIR/$DPKG_REPACK_DIR"
+				DEB_PACKAGE_ORIGINAL=$(echo "$DPKG_DEB_PACKAGE" | sed 's/'"$VERSION_SUFFIX"'//g')
+				#[[ ! -z "$DPKG_DEB_PACKAGE" && ! -z $DEB_PACKAGE_ORIGINAL ]] && \
+				#	mv "$REPO_DIR/$DPKG_DEB_PACKAGE" "$REPO_DIR/$DEB_PACKAGE_ORIGINAL"
+				#[[ ! -z "$DPKG_REPACK_DIR" ]] && \
+				#	rm -fr "$REPO_DIR/$DPKG_REPACK_DIR"
 			}
 		fi
 	done < "$file_list"
@@ -153,7 +157,7 @@ repack_files() {
 	[[ ! -z "$file_list" ]] && \
 		rm -f "$DATA_DIR/$file_list" 2> /dev/null
 	#clean last dir created
-	fakeroot -u rm -rf "$REPO_DIR"/dpkg-repack-* 2> /dev/null
+	#fakeroot -u rm -rf "$REPO_DIR"/dpkg-repack-* 2> /dev/null
 	
 	#cat "$LOG_STD"
 	#rm -f ."$LOG_STD" 2> /dev/null
@@ -194,8 +198,11 @@ human_filesize() {
 }
 
 get_number_of_lines() {
-	[[ ! -s "$1" ]] && echo 0
-	echo $(wc -l "$1" 2> /dev/null | cut -f1 -d " ") || echo 0
+	if [[ ! -s "$1" ]]; then 
+		echo 0
+	else
+		echo $(wc -l "$1" 2> /dev/null | cut -f1 -d " ") || echo 0
+	fi
 }
 
 is_data_cached() {
