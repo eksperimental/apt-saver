@@ -1,5 +1,10 @@
 #! /bin/bash
 
+# Description: Builds the files under $DATA_DIR.
+# 	These files consist of list of packages names (.list) and package files (.files)
+
+# Create a log file containing information about files in serveral directories in the system
+# Useful for developing this app.
 build_apt_data_logs() {
 	pushd "$DATA_DIR" 1> /dev/null
 	rm -f log.*.log 2> /dev/null
@@ -13,6 +18,7 @@ build_apt_data_logs() {
 	popd 1> /dev/null
 }
 
+# Creates the list and file files, depending on what option is passed.
 build_apt_data_packages() {
 	pushd "$DATA_DIR" 1> /dev/null
 	local app_option="$1"      #Ex: only, cached
@@ -67,7 +73,7 @@ build_apt_data_packages() {
 	;;
 
 	"local" )
-		#packages already installed in our local repository build by the command
+		#packages already installed in our local repository build by this app
 		#fakeroot -u ls "$REPO_DIR"/*.deb 2> /dev/null | xargs -n1 basename 2> /dev/null | grep -oP '^[^_]*(?=_)' | sort | uniq > packages.local.list
 		fakeroot -u ls "$REPO_DIR"/*.deb 2> /dev/null | xargs -n1 basename 2> /dev/null | grep -oP '^[^_]*(?=_)' | sed 's/'"$VERSION_SUFFIX"'//g' | sort | uniq > packages.local.list
 	;;
@@ -90,7 +96,6 @@ build_apt_data_packages() {
 		#build list for specific packages. Usage: app build-repository linux-generic language-pack-en 
 		[[ ! -z "$app_values" ]] && echo "$app_values" | tr ',' " " | tr ' ' "\n" | sort | uniq > "$DATA_DIR/packages.only.list"
 	;;
-
 
 	"available" )
 		#fakeroot -u dpkg -l "*" 2> /dev/null | grep -vP "^(Desired=|\||\+)"|  cut -d " " -f3 |  sort | uniq > packages.available.list

@@ -1,2 +1,3 @@
-/data/
-/repository/
+/data/*
+/repository/*
+/extra

@@ -29,7 +29,7 @@ global_variables() {
 	APP_CONFIG_FILE="${APP_DIR}/${APP_NAME}.config"
 
 	BUILD_REPOSITORY_OPTIONS="auto cached current default explicit manifest manual local repack available only removed"
-	#valid_opt='help, copy-packages, build-repository, build-data, repack, update, purge, config, build, add-source, remove-source, version, run-all'
+	#valid_opt='help, copy-packages, build-repository, build-apt-data, repack, update, purge, config, build, add-source, remove-source, version, run-all'
 
 	#OTHERS
 	DEAD_TIME=0
@@ -123,15 +123,26 @@ app() {
 		echo ""
 		echo "Usage:"
 		# command "set" to set variables
-		echo "    $APP_CMD help                         Show this message"
+		echo "    $APP_CMD help                         Shows this message"
+		echo "    $APP_CMD version                      Prints app version and licensing information."
 		#echo "    $APP_CMD install [-s] <version>       Download and install a <version>"
 		echo "    $APP_CMD build-apt-data <options>     Builds the data of installed packages. Options: ${BUILD_REPOSITORY_OPTIONS}"
 		echo "    $APP_CMD build-repository <name>      Builds repository. Options: ${BUILD_REPOSITORY_OPTIONS}"
 		echo "    $APP_CMD build-index <name>           Builds \"Packages.gz\""
+		echo "    $APP_CMD repack <package(s)>          Repacks packages installed in the system, into a .deb package"
+		echo "    $APP_CMD clean                        Removes all files from \$REPO_DIR and \$DATA_DIR."
+		echo "    $APP_CMD update                       Updates local source repository to apt-get database."
+		echo "    $APP_CMD show                         Displays the information from build-apt-data"
+		echo "    $APP_CMD update-db                    Update system's package database."
+		echo "    $APP_CMD add-source					Adds $REPOSITORY_SOURCE_FILE as a source to apt-get database"
+		echo "    $APP_CMD remove-source                Removes \$REPOSITORY_SOURCE_LINE from \$REPOSITORY_SOURCE_FILE"
+		echo "    $APP_CMD                        "
+		echo "    $APP_CMD                        "
+		echo "    $APP_CMD                        "
 		echo
 		echo "Example:"
-		echo "    $APP_CMD install v0.4.12              Install a specific version number"
-		echo "    $APP_CMD use 0.2                      Use the latest available 0.2.x release"
+		#echo "    $APP_CMD install v0.4.12              Install a specific version number"
+		#echo "    $APP_CMD use 0.2                      Use the latest available 0.2.x release"
 		echo
 	;;
 
@@ -284,6 +295,9 @@ app() {
 		popd 1> /dev/null	
 	;;
 
+	# Description: Builds the files under $DATA_DIR.
+	# 	These files consist of list of packages names (.list) and package files (.files)
+	# 	the file `build_apt_data.sh` in sourced
 	"build-apt-data" )
 		[[ "$1" == "$ORIGINAL_ARG_1" ]] && echo "Building Data..."
 		local app_option="$2"      #Ex: only, cached
@@ -294,6 +308,7 @@ app() {
 		build_apt_data_packages "$app_option" "$app_values"
 	;;
 
+	# Builds the Package Index (Packages.gz)
 	"build-index" )
 		echo "Building Package Index..."
 		echo "Scanning $(ls -al $REPO_DIR/*.deb | wc -l) for packages..."
@@ -309,11 +324,13 @@ app() {
 		popd 1> /dev/null
 	;;
 
+	# Repacks packages installed in the system, into a .deb package.
 	"repack" )
 		local package_names="${*:2}"
 		repack_files "$package_names"
 	;;
 
+	# Cleans the $REPO_DIR and $DATA_DIR, removing all the files
 	"clean" )
 		echo "You are about to delete all packages from \"$REPO_DIR\"?"
 		confirm  "Are you sure [y/N]?" "N" && {
@@ -326,6 +343,10 @@ app() {
 		echo "No files have been deleted." && return $(false)
 	;;
 
+	# Updates local source repository to apt-get database. 
+	#  Builds the index file is not present.
+	#  Adds local reporsitory to source
+	#  Runs apt-get update for the local source only
 	"update" )
 		pushd "$REPO_DIR" 1> /dev/null
 
@@ -354,20 +375,22 @@ app() {
 		popd 1> /dev/null
 	;;
 
+  # Displays the information from build-apt-data
+  #   ex: "app show default" it lists all the default packages
+  #   maybe: app list-names default, app list-files default
 	"show" )
-		#display the information from build-data
-		#ex: "app show default" it lists all the default packages
-		#maybe: app list-names default, app list-files default
-
 		local app_option="$2"
 		local app_values="$3"
 		! _check_BUILD_REPOSITORY_OPTIONS "$app_option" && exit 1
 		
 		app build-apt-data "$app_option" "$app_values"
-		#TODO: we should give a warning if the file cannot be found
+    [ ! -f /tmp/foo.txt ] && echo "ERROR: File not found!" 1>&2 && exit 1
+
 		cat "$DATA_DIR/packages.""$app_option"".list"
 	;;	
 
+  # Updates apt system database
+  #   Runs apt-get update only for the local source
 	"update-db" )
 		echo "Updating Package Database..."
 		local repo=$(basename "$REPOSITORY_SOURCE_FILE")
@@ -376,6 +399,7 @@ app() {
 			echo "Local repository index has been updated to the database."
 	;;
 
+  # 
 	"add-source" )
 		if contains_line "$REPOSITORY_SOURCE_FILE" "$REPOSITORY_SOURCE_LINE"; then
 			echo "Repository already present in the source list."
@@ -400,6 +424,7 @@ EOF
 		fi
 	;;
 
+  # Removes $REPOSITORY_SOURCE_LINE from $REPOSITORY_SOURCE_FILE
 	"remove-source" )
 		local source='/etc/apt/sources.list.d/'"$APP_NAME"'.list'
 		#sudo sh -c 'rm -f '"$REPO_DIR"'' && echo "Source has been removed!"
@@ -429,10 +454,13 @@ EOF
 		fi
 	;;
 
+  # Prints app version and licensing information
 	"version" ) 
-		echo "$APP_NAME v$APP_VERSION"
-		echo "Copyright \(C\) 2013 Free Software Foundation, Inc."
-		echo "License GPLv3: GNU GPL version 3"
+    echo "$APP_NAME v$APP_VERSION"
+    echo "Copyright \(C\) 2013 Free Software Foundation, Inc."
+    echo "/Dual licensed under the MIT or GPL Version 2 licenses."
+		echo ""
+		echo "License GPLv2: GNU GPL version 2"
 		echo "<http://www.gnu.org/licenses/gpl.html>."
 		echo "This is free software: you are free to change and redistribute it."
 		echo "There is NO WARRANTY, to the extent permitted by law."
@@ -441,6 +469,7 @@ EOF
 		echo "Please send bug reports and questions to <xxx@xxx.org>."
 	;;
 
+  # Configurate values
 	"config" )
 	;;
 
@@ -454,12 +483,13 @@ EOF
 	"remove-local-package" )
 	;;
 
+  # NOT IMPLEMENET YET
 	"install" )
 		#sudo dpkg -i *.deb
 		app update
 
 		mkdir -p "$REPO_DIR"/local
-		# TODO: hacer un loop. por cada archiveo en $REPO_DIR , 
+		# TODO: hacer un loop. por cada archivo en $REPO_DIR , 
 		# determinar si se necesita instalarlo.
 		# y si SI, hacer un hardlink en ./local
 		app build-apt-data current
@@ -467,11 +497,13 @@ EOF
 		#"$DATA_DIR"/packages.current.list
 	;;
 
-	# bypass anything else, run the command you want. Usesfull for developing this command
+  # Bypass anything else, by loading "$APP_DIR"/test
+  #   Run the command you want. Useful for developing this app
 	"test" )
 		source "$APP_DIR"/test
 	;;
 
+  # Unknown command
 	* )
 		error_msg 1>&2
 		echo "Command not understood" 1>&2
